@@ -1,0 +1,10 @@
+
+# No save files (vim, emacs, etc.)
+
+*~
+\#~
+
+# Python
+
+__pycache__/
+*.py[cod]
