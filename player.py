@@ -1,4 +1,5 @@
 # Class that holds player info
 class Player:
-	xLocation = 0
-	yLocation = 0
+	def __init__(self):
+		self.xLocation = 0
+		self.yLocation = 0

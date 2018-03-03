@@ -1,16 +1,16 @@
 # Class for game output
 class Output:
-	
-	# List of tasts
-	toDo = []
+	def __init__(self):
+		# List of tasts
+		self.toDo = []
 
-	def update():
+	def updateO(self):
 		print("\033[H\033[J")
 		# Loop that terminates once task list is empty
-		while len(Output.toDo) > 0:
+		while len(self.toDo) > 0:
 			
 			# Select and remove most recent task from task list
-			a = Output.toDo.pop()
+			a = self.toDo.pop()
 			
 			# User instruction not understood
 			if a[0] == "X":
