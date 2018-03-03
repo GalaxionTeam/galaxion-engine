@@ -4,7 +4,7 @@ class Update:
 		# List of tasks
 		self.toDo = []
 	
-	def updateU(self, pla, out):
+	def update(self, pla, out):
 		
 		# Loop that terminates once task list is empty
 		while len(self.toDo) > 0:

@@ -3,7 +3,7 @@ class Input:
 	def __init__(self):
 		pass
 
-	def updateI(self, upd):
+	def update(self, upd):
 		# Read from command line
 		a = input()
 

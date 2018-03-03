@@ -4,7 +4,7 @@ class Output:
 		# List of tasts
 		self.toDo = []
 
-	def updateO(self):
+	def update(self):
 		print("\033[H\033[J")
 		# Loop that terminates once task list is empty
 		while len(self.toDo) > 0:

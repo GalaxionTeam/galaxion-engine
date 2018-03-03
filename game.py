@@ -10,10 +10,10 @@ class Game:
 		self.player1 = Player()
 		self.out = Output()
 
-	def updateG(self):
-		self.inp.updateI(self.upd)
-		self.upd.updateU(self.player1, self.out)
-		self.out.updateO()
+	def update(self):
+		self.inp.update(self.upd)
+		self.upd.update(self.player1, self.out)
+		self.out.update()
 
 if __name__ == "__main__":
 	
@@ -21,4 +21,4 @@ if __name__ == "__main__":
 	
 	# Call update functions in a forever loop
 	while True:
-		game.updateG()
+		game.update()
