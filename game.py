@@ -2,6 +2,7 @@ from input import Input
 from update import Update
 from player import Player
 from output import Output
+from message import Message
 
 class Game:
 	def __init__(self):
@@ -9,6 +10,7 @@ class Game:
 		self.upd = Update()
 		self.player1 = Player()
 		self.out = Output()
+		self.mess = Message()
 
 	def update(self):
 		self.inp.update(self.upd)

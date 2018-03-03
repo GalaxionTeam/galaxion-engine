@@ -17,37 +17,30 @@ class Input:
 		# Initialize list to send instructions to update
 		message = []
 
-		# User wants to move
-		if "MOVE" in words:
-			message.append("M")
-
-			# Move North
-			if "NORTH" in words:
-				message.append("N")
+		# Move North
+		if "NORTH" in words:
+			message.append(1)
 			
-			# Move South
-			elif "SOUTH" in words:
-				message.append("S")
+		# Move South
+		elif "SOUTH" in words:
+			message.append(2)
 
-			# Move East
-			elif "EAST" in words:
-				message.append("E")
+		# Move East
+		elif "EAST" in words:
+			message.append(3)
 
-			# Move West
-			elif "WEST" in words:
-				message.append("W")
+		# Move West
+		elif "WEST" in words:
+			message.append(4)
 
-			# Error in move instruction
-			else:
-				message.append("X")
-		
 		# User wants to know location
-		elif "POSITION" in words:
-			message.append("P")
+		elif "LOOK" in words:
+			message.append(5)
 		
 		# User command not understood
 		else:
-			message.append("X")
+			message.append(0)
 
 		# Send instructions to update
-		upd.toDo.append(message)
+		upd.messages.append(message)
+		print(message)
