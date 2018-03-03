@@ -23,7 +23,7 @@ class Output:
 			def West():
 				print("West 1 Space")
 			def Look():
-				print("Player located at position (" + repr(a[1]) + ", " + repr(a[2]) + ")")
+				print("Player located at position" + a.message)
 			options = {0 : err,
 					   1 : North,
 					   2 : South,
@@ -31,5 +31,5 @@ class Output:
 					   4 : West,
 					   5 : Look,
 					   }
-			options[a[0]]()
+			options[a.code]()
 			

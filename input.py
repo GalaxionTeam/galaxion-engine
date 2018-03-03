@@ -1,3 +1,5 @@
+from message import Message
+
 # Class that reads user input
 class Input:
 	def __init__(self):
@@ -14,33 +16,31 @@ class Input:
 		for i in range(0,len(words)):
 			words[i] = words[i].upper()
 
-		# Initialize list to send instructions to update
-		message = []
+		mess = Message()
 
 		# Move North
 		if "NORTH" in words:
-			message.append(1)
+			mess.code = 1
 			
 		# Move South
 		elif "SOUTH" in words:
-			message.append(2)
+			mess.code = 2
 
 		# Move East
 		elif "EAST" in words:
-			message.append(3)
+			mess.code = 3
 
 		# Move West
 		elif "WEST" in words:
-			message.append(4)
+			mess.code = 4
 
 		# User wants to know location
 		elif "LOOK" in words:
-			message.append(5)
+			mess.code = 5
 		
 		# User command not understood
 		else:
-			message.append(0)
+			mess.code = 0
 
 		# Send instructions to update
-		upd.messages.append(message)
-		print(message)
+		upd.messages.append(mess)
