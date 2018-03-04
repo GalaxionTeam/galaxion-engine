@@ -44,4 +44,3 @@ class Update:
 			
 			# Send instructions to output
 			out.messages.append(mess)
-			

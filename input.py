@@ -5,10 +5,7 @@ class Input:
 	def __init__(self):
 		pass
 
-	def update(self, upd):
-		# Read from command line
-		a = input()
-
+	def parse_words(self, a):
 		# Split words into list
 		words = a.split()
 
@@ -16,31 +13,35 @@ class Input:
 		for i in range(0,len(words)):
 			words[i] = words[i].upper()
 
-		mess = Message()
-
 		# Move North
 		if "NORTH" in words:
-			mess.code = 1
-			
+			return(1)
+
 		# Move South
 		elif "SOUTH" in words:
-			mess.code = 2
+			return(2)
 
 		# Move East
 		elif "EAST" in words:
-			mess.code = 3
+			return(3)
 
 		# Move West
 		elif "WEST" in words:
-			mess.code = 4
+			return(4)
 
 		# User wants to know location
 		elif "LOOK" in words:
-			mess.code = 5
+			return(5)
 		
 		# User command not understood
 		else:
-			mess.code = 0
+			return(0)
+
+	def update(self, upd):
+		# Read from command line
+		a = input()
+		mess = Message()
+		mess.code = self.parse_words(a)
 
 		# Send instructions to update
 		upd.messages.append(mess)
