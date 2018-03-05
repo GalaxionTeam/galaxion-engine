@@ -16,23 +16,14 @@ class Output:
 				#I'm pretty sure we handle this case back in input
 			def North():
 				print("North 1 Space")
-				#player.location = (x, y - 1)
-				#print location.description
 			def South():
 				print("South 1 Space")
-				#player.location = (x, y + 1)
-				#print location.description
 			def East():
 				print("East 1 Space")
-				#player.location = (x + 1, y)
-				#print location.description
 			def West():
 				print("West 1 Space")
-				#player.location = (x - 1, y)
-				#print location.description
 			def Look():
 				print("Player located at position" + a.message)
-				#print player.location.description
 			options = {0 : err,
 					   1 : North,
 					   2 : South,
