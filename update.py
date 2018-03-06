@@ -5,13 +5,13 @@ class Update:
 	def __init__(self):
 		# List of tasks
 		self.messages = []
-	
+
 	def update(self, pla, out):
-		
+
 		# Loop that terminates once task list is empty
 		while len(self.messages) > 0:
-			
-			mess = Message()			
+
+			mess = Message()
 			# Select and remove most recent task from task list
 			a = self.messages.pop()
 
@@ -32,7 +32,7 @@ class Update:
 			def Look():
 				mess.code = 5
 				mess.message = " (" + repr(pla.xLocation) + ", " + repr(pla.yLocation) + ")"
-				
+
 			options = {0 : err,
 					   1 : North,
 					   2 : South,
@@ -41,6 +41,6 @@ class Update:
 					   5 : Look,
 					   }
 			options[a.code]()
-			
+
 			# Send instructions to output
 			out.messages.append(mess)

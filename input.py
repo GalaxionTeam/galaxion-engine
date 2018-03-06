@@ -34,7 +34,7 @@ class Input:
 		# User wants to know location
 		elif "LOOK" in words:
 			mess.code = 5
-		
+
 		# User command not understood
 		else:
 			mess.code = 0
