@@ -1,5 +1,5 @@
 # Class that holds player info
 class Player:
-	def __init__(self, code = 0, message = "", debug = "", args=[]):
-		self.xLocation = 0
-		self.yLocation = 0
+	def __init__(self, x_location = 0, y_location = 0):
+		self.x_Location = 0
+		self.y_Location = 0
