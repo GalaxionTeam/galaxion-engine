@@ -19,19 +19,19 @@ class Update:
 				mess.code = 0
 			def North():
 				mess.code = 1
-				pla.yLocation += 1
+				pla.y_location += 1
 			def South():
 				mess.code = 2
-				pla.yLocation -= 1
+				pla.y_location -= 1
 			def East():
 				mess.code = 3
-				pla.xLocation += 1
+				pla.x_location += 1
 			def West():
 				mess.code = 4
-				pla.xLocation -= 1
+				pla.x_location -= 1
 			def Look():
 				mess.code = 5
-				mess.message = " (" + repr(pla.xLocation) + ", " + repr(pla.yLocation) + ")"
+				mess.message = " (" + repr(pla.x_location) + ", " + repr(pla.y_location) + ")"
 
 			options = {0 : err,
 					   1 : North,
