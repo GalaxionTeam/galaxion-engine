@@ -1,8 +1,8 @@
 from input import Input
 from update import Update
-from player import Player
+from assets.player import Player
 from output import Output
-
+	
 class Game:
 	def __init__(self):
 		self.inp = Input()
