@@ -24,11 +24,14 @@ class Output:
 				print("West 1 Space")
 			def Look():
 				print("Player located at position" + a.message)
+			def Out():
+				print("Out of Bounds")
 			options = {0 : err,
 					   1 : North,
 					   2 : South,
 					   3 : East,
 					   4 : West,
 					   5 : Look,
+					   6 : Out,
 					   }
 			options[a.code]()

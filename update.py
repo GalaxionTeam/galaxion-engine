@@ -6,7 +6,7 @@ class Update:
 		# List of tasks
 		self.messages = []
 
-	def update(self, pla, out):
+	def update(self, pla, out, world):
 
 		# Loop that terminates once task list is empty
 		while len(self.messages) > 0:
@@ -18,20 +18,32 @@ class Update:
 			def err():
 				mess.code = 0
 			def North():
-				mess.code = 1
-				pla.y_location += 1
+				if pla.room.y == 0:
+					mess.code = 6
+				else:
+					mess.code = 1
+					pla.room = world.grid[pla.room.x][pla.room.y - 1]
 			def South():
-				mess.code = 2
-				pla.y_location -= 1
+				if pla.room.y == len(world.grid[0]) - 1:
+					mess.code = 6
+				else:
+					mess.code = 2
+					pla.room = world.grid[pla.room.x][pla.room.y + 1]
 			def East():
-				mess.code = 3
-				pla.x_location += 1
+				if pla.room.x == len(world.grid) - 1:
+					mess.code = 6
+				else:
+					mess.code = 3
+					pla.room = world.grid[pla.room.x + 1][pla.room.y]
 			def West():
-				mess.code = 4
-				pla.x_location -= 1
+				if pla.room.x == 0:
+					mess.code = 6
+				else:
+					mess.code = 4
+					pla.room = world.grid[pla.room.x - 1][pla.room.y]
 			def Look():
 				mess.code = 5
-				mess.message = " (" + repr(pla.x_location) + ", " + repr(pla.y_location) + ")"
+				mess.message = pla.room.name
 
 			options = {0 : err,
 					   1 : North,
