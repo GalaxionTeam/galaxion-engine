@@ -18,17 +18,17 @@ class Update:
 			def err():
 				mess.code = 0
 			def North():
-				if pla.room.y == 0:
-					mess.code = 6
-				else:
-					mess.code = 1
-					pla.room = world.grid[pla.room.x][pla.room.y - 1]
-			def South():
 				if pla.room.y == len(world.grid[0]) - 1:
 					mess.code = 6
 				else:
-					mess.code = 2
+					mess.code = 1
 					pla.room = world.grid[pla.room.x][pla.room.y + 1]
+			def South():
+				if pla.room.y == 0:
+					mess.code = 6
+				else:
+					mess.code = 2
+					pla.room = world.grid[pla.room.x][pla.room.y - 1]
 			def East():
 				if pla.room.x == len(world.grid) - 1:
 					mess.code = 6
