@@ -24,14 +24,35 @@ class Output:
 				print("West 1 Space")
 			def Look():
 				print("Player located at position" + a.message)
+				if len(a.args) > 0:
+					print("Items in room:")
+					for b in a.args:
+						print(b.name)
+			def Inventory():
+				if len(a.args) > 0:
+					print("Items in inventory:")
+					for b in a.args:
+						print(b.name)
+				else:
+					print("Inventory empty")
+			def Select():
+				print(a.message + " selected")
+			def Drop():
+				print(a.message + " dropped")
 			def Out():
 				print("Out of Bounds")
+			def Create():
+				print(a.message + " created")
 			options = {0 : err,
 					   1 : North,
 					   2 : South,
 					   3 : East,
 					   4 : West,
 					   5 : Look,
-					   6 : Out,
+					   6 : Inventory,
+					   7 : Select,
+					   8 : Drop,
+					   9 : Out,
+					   10: Create,
 					   }
 			options[a.code]()

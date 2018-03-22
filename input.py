@@ -35,6 +35,30 @@ class Input:
 		elif "LOOK" in words:
 			mess.code = 5
 
+		elif "INVENTORY" in words:
+			mess.code = 6
+
+		elif "SELECT" in words:
+			if words.index("SELECT") != len(words) - 1:
+				mess.code = 7
+				mess.message = words[words.index("SELECT") + 1]
+			else:
+				mess.code = 0
+
+		elif "DROP" in words:
+			if words.index("DROP") != len(words) - 1:
+				mess.code = 8
+				mess.message = words[words.index("DROP") + 1]
+			else:
+				mess.code = 0
+
+		elif "CREATE" in words:
+			if words.index("CREATE") != len(words) - 1:
+				mess.code = 10
+				mess.message = words[words.index("CREATE") + 1]
+			else:
+				mess.code = 0
+
 		# User command not understood
 		else:
 			mess.code = 0
