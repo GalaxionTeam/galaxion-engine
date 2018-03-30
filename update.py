@@ -115,8 +115,8 @@ class Update:
 				room_description = json_data["Room"]["description"]
 
 				room = 0
-				for d in range(len(world.grid)):
-					for b in range(len(world.grid[0])):
+				for d in range(json_data["World"]["x_dim"]):
+					for b in range(json_data["World"]["x_dim"]):
 						world.grid[d][b].items.clear()
 						world.grid[d][b].name = room_name[room]
 						world.grid[d][b].description = room_description[room]
