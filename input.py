@@ -59,6 +59,22 @@ class Input:
 			else:
 				mess.code = 0
 
+		elif "SAVE" in words:
+			if words.index("SAVE") != len(words) - 1:
+				mess.code = 11
+				mess.message = words[words.index("SAVE") + 1]
+			else:
+				mess.code = 11
+				mess.message = "data"
+
+		elif "LOAD" in words:
+			if words.index("LOAD") != len(words) - 1:
+				mess.code = 12
+				mess.message = words[words.index("LOAD") + 1]
+			else:
+				mess.code = 12
+				mess.message = "data"
+
 		# User command not understood
 		else:
 			mess.code = 0
