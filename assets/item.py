@@ -1,5 +1,5 @@
 class Item:
-	def __init__(self, name = "", description = "", loc_d = "", inDepthDescription = ""):
+	def __init__(self, name = "", description = "", location_desc = ""):
 		self.name = name
 		self.description = description
-		self.loc_d = loc_d
+		self.location_desc = location_desc

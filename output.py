@@ -28,7 +28,7 @@ class Output:
 					print("Items in room: ")
 					for b in a.args:
 						print(b.name)
-						print(b.loc_d)
+						print(b.location_desc)
 			def Inventory():
 				if len(a.args) > 0:
 					print("Items in inventory:")
