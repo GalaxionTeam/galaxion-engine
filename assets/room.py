@@ -1,5 +1,5 @@
 class Room:
-	def __init__(self, x = 0, y = 0, name = "", items = None, description = ""):
+	def __init__(self, x = 0, y = 0, name = "", items = None, description = "yes"):
 		if items is None:
 			items = []
 		self.items = items
