@@ -25,9 +25,10 @@ class Output:
 			def Look():
 				print("Player located at position" + a.message)
 				if len(a.args) > 0:
-					print("Items in room:")
+					print("Items in room: ")
 					for b in a.args:
 						print(b.name)
+						print(b.loc_d)
 			def Inventory():
 				if len(a.args) > 0:
 					print("Items in inventory:")

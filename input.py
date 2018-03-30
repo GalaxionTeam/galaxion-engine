@@ -58,7 +58,6 @@ class Input:
 				mess.message = words[words.index("CREATE") + 1]
 			else:
 				mess.code = 0
-
 		# User command not understood
 		else:
 			mess.code = 0
