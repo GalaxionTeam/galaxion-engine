@@ -1,3 +1,6 @@
+from room import Room
+from item import Item
+
 # Class for game output
 class Output:
 	def __init__(self):
@@ -23,11 +26,13 @@ class Output:
 			def West():
 				print("West 1 Space")
 			def Look():
-				print("Player located at position" + a.message)
-				if len(a.args) > 0:
+				if type(a.args[0]) == Room:
+					print("Player located at position" + a.message)
 					print("Items in room:")
-					for b in a.args:
-						print(b.name)
+					for item in a.args[0].items:
+						print(item.name)
+				elif a.args:
+					print(a.message.description)
 			def Inventory():
 				if len(a.args) > 0:
 					print("Items in inventory:")

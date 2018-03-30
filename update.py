@@ -1,5 +1,6 @@
 from message import Message
 from assets.item import Item
+from assets.room import Room
 
 # Class that updates game stat
 class Update:
@@ -44,8 +45,16 @@ class Update:
 					pla.room = world.grid[pla.room.x - 1][pla.room.y]
 			def Look():
 				mess.code = 5
-				mess.message = pla.room.name
-				mess.args = pla.room.items
+				if a.args[0] == "ROOM":
+					# Pops the Room into the output queue
+					mess.args.append(pla.room)
+					mess.message = pla.room.name
+				# Assume the arg refers to an Item if args is non-empty
+				elif a.args:
+					item = a.args[0]
+					mess.args.append(item)
+					# Pops an Item into the output queue
+					mess.message = [k for k,v in pla.room.items.items() if v.upper() == item].pop()
 			def Inventory():
 				mess.code = 6
 				mess.args = pla.items

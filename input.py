@@ -8,13 +8,10 @@ class Input:
 	def parse_words(self, a):
 		mess = Message()
 
-		# Split words into list
-		words = a.split()
+		# Capitalize all words and split into list
+		words = a.upper().split()
 
-		# Make all words uppercase
-		for i in range(0,len(words)):
-			words[i] = words[i].upper()
-
+		# Assign message code based on identified keywords
 		# Move North
 		if "NORTH" in words:
 			mess.code = 1
@@ -34,6 +31,14 @@ class Input:
 		# User wants to know location
 		elif "LOOK" in words:
 			mess.code = 5
+			# Check if there is an accessible argument after LOOK
+			# Defaults to looking at the ROOM if LOOK is the last token in input
+			# Can only handle single-word args for now
+			arg_index = words.index("LOOK") + 1
+			if arg_index == len(words) or words[arg_index].upper() == "ROOM":
+				mess.args.append("ROOM")
+			else:
+				mess.args.append(words[arg_index].upper())
 
 		elif "INVENTORY" in words:
 			mess.code = 6
