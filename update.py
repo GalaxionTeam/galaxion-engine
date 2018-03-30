@@ -1,6 +1,7 @@
 import json
 from message import Message
 from assets.item import Item
+from assets.world import World
 
 # Class that updates game stat
 class Update:
@@ -106,7 +107,6 @@ class Update:
 
 				with open(a.message.lower() + ".json", "r") as read:
 					json_data = json.load(read)
-				pla.room = world.grid[json_data["Player"]["x_loc"]][json_data["Player"]["y_loc"]]
 				item_x = json_data["Items"]["x_loc"]
 				item_y = json_data["Items"]["y_loc"]
 				item_name = json_data["Items"]["name"]
@@ -114,10 +114,11 @@ class Update:
 				room_name = json_data["Room"]["name"]
 				room_description = json_data["Room"]["description"]
 
+				world = World(json_data["World"]["x_dim"],json_data["World"]["y_dim"])
+				pla.room = world.grid[json_data["Player"]["x_loc"]][json_data["Player"]["y_loc"]]
 				room = 0
 				for d in range(json_data["World"]["x_dim"]):
-					for b in range(json_data["World"]["x_dim"]):
-						world.grid[d][b].items.clear()
+					for b in range(json_data["World"]["y_dim"]):
 						world.grid[d][b].name = room_name[room]
 						world.grid[d][b].description = room_description[room]
 						room += 1
