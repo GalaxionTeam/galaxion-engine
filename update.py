@@ -83,12 +83,14 @@ class Update:
 						room_name.append(world.grid[d][b].name)
 						room_description.append(world.grid[d][b].description)
 						for c in world.grid[d][b].items:
+							# Item x/y coordinate
 							item_x.append(world.grid[d][b].x)
 							item_y.append(world.grid[d][b].y)
 							item_name.append(c.name)
 							item_description.append(c.description)
 
 				for d in pla.items:
+					# If item is in player's inventory, x and y = -1
 					item_x.append(-1)
 					item_y.append(-1)
 					item_name.append(d.name)
@@ -119,12 +121,14 @@ class Update:
 				room = 0
 				for d in range(json_data["World"]["x_dim"]):
 					for b in range(json_data["World"]["y_dim"]):
-						world.grid[d][b].name = room_name[room]
-						world.grid[d][b].description = room_description[room]
+						if room < len(room_name):
+							world.grid[d][b].name = room_name[room]
+							world.grid[d][b].description = room_description[room]
 						room += 1
 				pla.items.clear()
 
 				for d in range(len(item_x)):
+					# If x/y = -1, item in inventory, else item in specific x/y
 					if item_x[d] == -1:
 						pla.items.append(Item(item_name[d],item_description[d]))
 					else:
