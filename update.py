@@ -76,6 +76,7 @@ class Update:
 				item_y = []
 				item_name = []
 				item_description = []
+				item_loc_des = []
 				room_name = []
 				room_description = []
 				for d in range(len(world.grid)):
@@ -88,6 +89,7 @@ class Update:
 							item_y.append(world.grid[d][b].y)
 							item_name.append(c.name)
 							item_description.append(c.description)
+							item_loc_des.append(c.location_desc)
 
 				for d in pla.items:
 					# If item is in player's inventory, x and y = -1
@@ -95,9 +97,10 @@ class Update:
 					item_y.append(-1)
 					item_name.append(d.name)
 					item_description.append(d.description)
+					item_loc_des.append(d.location_desc)
 				json_data = {
 					"Player" : {"x_loc" : pla.room.x, "y_loc" : pla.room.y},
-					"Items" : {"x_loc" : item_x, "y_loc" : item_y, "name" : item_name, "description" : item_description},
+					"Items" : {"x_loc" : item_x, "y_loc" : item_y, "name" : item_name, "description" : item_description, "loc_des" : item_loc_des},
 					"World" : {"x_dim" : len(world.grid), "y_dim" : len(world.grid[0])},
 					"Room" : {"name" : room_name, "description" : room_description}
 				}
@@ -113,6 +116,7 @@ class Update:
 				item_y = json_data["Items"]["y_loc"]
 				item_name = json_data["Items"]["name"]
 				item_description = json_data["Items"]["description"]
+				item_loc_des = json_data["Items"]["loc_des"]
 				room_name = json_data["Room"]["name"]
 				room_description = json_data["Room"]["description"]
 				world.copy(json_data["World"]["x_dim"],json_data["World"]["y_dim"])
@@ -129,9 +133,9 @@ class Update:
 				for d in range(len(item_x)):
 					# If x/y = -1, item in inventory, else item in specific x/y
 					if item_x[d] == -1:
-						pla.items.append(Item(item_name[d],item_description[d]))
+						pla.items.append(Item(item_name[d],item_description[d]),item_loc_des[d])
 					else:
-						world.grid[item_x[d]][item_y[d]].items.append(Item(item_name[d],item_description[d]))
+						world.grid[item_x[d]][item_y[d]].items.append(Item(item_name[d],item_description[d],item_loc_des[d]))
 
 			options = {0 : err,
 					   1 : North,
