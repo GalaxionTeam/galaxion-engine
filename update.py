@@ -115,8 +115,7 @@ class Update:
 				item_description = json_data["Items"]["description"]
 				room_name = json_data["Room"]["name"]
 				room_description = json_data["Room"]["description"]
-
-				world = World(json_data["World"]["x_dim"],json_data["World"]["y_dim"])
+				world.copy(json_data["World"]["x_dim"],json_data["World"]["y_dim"])
 				pla.room = world.grid[json_data["Player"]["x_loc"]][json_data["Player"]["y_loc"]]
 				room = 0
 				for d in range(json_data["World"]["x_dim"]):
