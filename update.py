@@ -24,28 +24,24 @@ class Update:
 				else:
 					mess.code = 1
 					pla.room = world.grid[pla.room.x][pla.room.y + 1]
-					print(pla.room.description)
 			def South():
 				if pla.room.y == 0:
 					mess.code = 9
 				else:
 					mess.code = 2
 					pla.room = world.grid[pla.room.x][pla.room.y - 1]
-					print(pla.room.description)
 			def East():
 				if pla.room.x == len(world.grid) - 1:
 					mess.code = 9
 				else:
 					mess.code = 3
 					pla.room = world.grid[pla.room.x + 1][pla.room.y]
-					print(pla.room.description)
 			def West():
 				if pla.room.x == 0:
 					mess.code = 9
 				else:
 					mess.code = 4
 					pla.room = world.grid[pla.room.x - 1][pla.room.y]
-					print(pla.room.description)
 			def Look():
 				mess.code = 5
 				mess.message = pla.room.name
