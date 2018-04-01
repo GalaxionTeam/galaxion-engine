@@ -68,6 +68,35 @@ class Update:
 				mess.message = a.message
 				pla.room.items.append(Item(a.message))
 
+			def Edit_Room():
+				mess.code = 14
+				if a.args[0].upper() == "NAME":
+					pla.room.name = a.args[1]
+				elif a.args[0].upper() == "DESCRIPTION":
+					pla.room.description = a.args[1]
+				else:
+					mess.code = 0
+
+			def Edit_Item():
+				mess.code = 15
+				inside = False
+				loc = 0
+				for i in range(len(pla.room.items)):
+					if (a.args[0].upper() == pla.room.items[i].name):
+						inside = True
+						loc = i
+				if inside:
+					if a.args[1].upper() == "NAME":
+						pla.room.items[loc].name = a.args[2]
+					elif a.args[1].upper() == "DESCRIPTION":
+						pla.room.items[loc].description = a.args[2]
+					elif a.args[1].upper() == "LOCATION DESCRIPTION":
+						pla.room.items[loc].location_desc = a.args[2]
+					else:
+						mess.code = 0
+				else:
+					mess.code = 0
+
 			options = {0 : err,
 					   1 : North,
 					   2 : South,
@@ -78,6 +107,8 @@ class Update:
 					   7 : Select,
 					   8 : Drop,
 					   10 : Create,
+					   14 : Edit_Room,
+					   15 : Edit_Item,
 					   }
 			options[a.code]()
 

@@ -8,6 +8,31 @@ class Input:
 	def parse_words(self, a):
 		mess = Message()
 
+		if len(a) > 0:
+			if a[0] == '~':
+				words = a.split('~')
+				args = []
+				if(words[1].upper() == "ROOM"):
+					if len(words) == 4:
+						args.append(words[2])
+						args.append(words[3])
+						mess.code = 14
+					else:
+						mess.code = 0
+				elif(words[1].upper() == "ITEM"):
+					if len(words) == 5:
+						args.append(words[2])
+						args.append(words[3])
+						args.append(words[4])
+						mess.code = 15
+					else:
+						mess.code = 0
+				else:
+					print("Unrecognized Command")
+					mess.code = 0
+				mess.args = args
+				return mess
+
 		# Split words into list
 		words = a.split()
 

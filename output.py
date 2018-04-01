@@ -24,7 +24,7 @@ class Output:
 				print("West 1 Space")
 			def Look():
 				#print(a.room.description)
-				print("Player located at position" + a.message)
+				print("Player located at " + a.message)
 				if len(a.args) > 0:
 					print("Items in room: ")
 					for b in a.args:
@@ -44,6 +44,10 @@ class Output:
 				print("Out of Bounds")
 			def Create():
 				print(a.message + " created")
+			def Edit_Room():
+				print("Room Edited")
+			def Edit_Item():
+				print("Item Edited")
 			options = {0 : err,
 					   1 : North,
 					   2 : South,
@@ -55,5 +59,7 @@ class Output:
 					   8 : Drop,
 					   9 : Out,
 					   10: Create,
+					   14: Edit_Room,
+					   15: Edit_Item,
 					   }
 			options[a.code]()
