@@ -17,27 +17,27 @@ class Input:
 
 		# Move North
 		if "NORTH" in words:
-			mess.code = 1
+			mess.code = code.NORTH
 
 		# Move South
 		elif "SOUTH" in words:
-			mess.code = 2
+			mess.code = code.SOUTH
 
 		# Move East
 		elif "EAST" in words:
-			mess.code = 3
+			mess.code = code.EAST
 
 		# Move West
 		elif "WEST" in words:
-			mess.code = 4
+			mess.code = code.WEST
 
 		# User wants to know location
 		elif "LOOK" in words:
-			mess.code = 5
+			mess.code = code.LOOK
 
 		# User command not understood
 		else:
-			mess.code = 0
+			mess.code = code.ERR
 
 		return mess
 

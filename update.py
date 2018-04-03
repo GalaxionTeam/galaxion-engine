@@ -16,29 +16,29 @@ class Update:
 			a = self.messages.pop()
 
 			def err():
-				mess.code = 0
+				mess.code = code.ERR
 			def North():
-				mess.code = 1
+				mess.code = code.NORTH
 				pla.yLocation += 1
 			def South():
-				mess.code = 2
+				mess.code = code.SOUTH
 				pla.yLocation -= 1
 			def East():
-				mess.code = 3
+				mess.code = code.EAST
 				pla.xLocation += 1
 			def West():
-				mess.code = 4
+				mess.code = code.WEST
 				pla.xLocation -= 1
 			def Look():
-				mess.code = 5
+				mess.code = code.LOOK
 				mess.message = " (" + repr(pla.xLocation) + ", " + repr(pla.yLocation) + ")"
 
-			options = {0 : err,
-					   1 : North,
-					   2 : South,
-					   3 : East,
-					   4 : West,
-					   5 : Look,
+			options = {code.ERR : err,
+					   code.NORTH : North,
+					   code.SOUTH : South,
+					   code.EAST : East,
+					   code.WEST : West,
+					   code.LOOK : Look,
 					   }
 			options[a.code]()
 
