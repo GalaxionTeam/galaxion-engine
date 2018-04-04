@@ -82,7 +82,7 @@ class Update:
 				inside = False
 				loc = 0
 				for i in range(len(pla.room.items)):
-					if (a.args[0].upper() == pla.room.items[i].name):
+					if (a.args[0].upper() == pla.room.items[i].name.upper()):
 						inside = True
 						loc = i
 				if inside:
