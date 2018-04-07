@@ -1,5 +1,5 @@
-from room import Room
-from item import Item
+from assets.room import Room
+from assets.item import Item
 
 # Class for game output
 class Output:
@@ -26,13 +26,21 @@ class Output:
 			def West():
 				print("West 1 Space")
 			def Look():
-				if type(a.args[0]) == Room:
-					print("Player located at position" + a.message)
-					print("Items in room:")
-					for item in a.args[0].items:
-						print(item.name)
-				elif a.args:
-					print(a.message.description)
+				# Should implement an error code here to make this easier
+				if a.debug == "NO INPUT":
+					print("You didn't say what to look at!")
+				elif type(a.args[0]) is Room:
+					room = a.args[0]
+					print("You are in: " + room.name)
+					print("You are at: ({}, {})".format(room.x, room.y))
+					# Prints the Room description
+					print(a.message)
+				# Gotta be a better way of checking this
+				elif a.args.pop() == 'ITEMS':
+					# Prints "Following items in room:" message
+					print(a.message)
+					for item in a.args:
+						print(item)
 			def Inventory():
 				if len(a.args) > 0:
 					print("Items in inventory:")

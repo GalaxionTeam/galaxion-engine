@@ -6,3 +6,6 @@ class Item:
 		self.name = name
 		self.description = description
 		self.ID = _ID + 1
+
+	def __str__(self):
+		return "{}: {}".format(self.name, self.description)
