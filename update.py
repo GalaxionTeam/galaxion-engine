@@ -46,6 +46,7 @@ class Update:
 				mess.code = 5
 				mess.message = pla.room.name
 				mess.args = pla.room.items
+				#print(str(pla.room.items))
 			def Inventory():
 				mess.code = 6
 				mess.args = pla.items
@@ -67,6 +68,15 @@ class Update:
 				mess.code = 10
 				mess.message = a.message
 				pla.room.items.append(Item(a.message))
+				#print(str(pla.room.items))
+			def Delete():
+				mess.code = 14
+				mess.message = a.message
+				for b in pla.room.items:
+					if a.message == b.name:
+						pla.room.items.pop(pla.room.items.index(b))
+						#print(str(pla.room.items))
+
 
 			options = {0 : err,
 					   1 : North,
@@ -78,6 +88,7 @@ class Update:
 					   7 : Select,
 					   8 : Drop,
 					   10 : Create,
+					   14 : Delete,
 					   }
 			options[a.code]()
 

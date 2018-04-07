@@ -44,6 +44,8 @@ class Output:
 				print("Out of Bounds")
 			def Create():
 				print(a.message + " created")
+			def Delete():
+				print(a.message + " deleted")
 			options = {0 : err,
 					   1 : North,
 					   2 : South,
@@ -55,5 +57,6 @@ class Output:
 					   8 : Drop,
 					   9 : Out,
 					   10: Create,
+					   14: Delete,
 					   }
 			options[a.code]()

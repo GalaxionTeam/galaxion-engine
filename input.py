@@ -58,6 +58,12 @@ class Input:
 				mess.message = words[words.index("CREATE") + 1]
 			else:
 				mess.code = 0
+		elif "DELETE" in words:
+			if words.index("DELETE") != len(words) - 1:
+				mess.code = 14
+				mess.message = words[words.index("DELETE") + 1]
+			else:
+				mess.code = 0
 		# User command not understood
 		else:
 			mess.code = 0
