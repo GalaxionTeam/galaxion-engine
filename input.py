@@ -2,71 +2,40 @@ from message import Message
 
 # Class that reads user input
 class Input:
+		
 	def __init__(self):
 		pass
 
-	def parse_words(self, a):
+	def generate_message(user_command):
+
+		#Valid commands
+    		regular_commands = 
+{"ERROR" : "ERR_CMD", "NORTH" : "PLA_N_WRLD", "SOUTH" : "PLA_S_WRLD", "EAST" : "PLA_E_WRLD", "WEST" : "PLA_W_WRLD", "DROP" : "PLA_RMV_INV"}
+
+		special_commands = 
+["CREATE", "DROP", "SELECT", "GRAB", "TAKE"]
+	
 		mess = Message()
 
-		# Split words into list
-		words = a.split()
-
 		# Make all words uppercase
-		for i in range(0,len(words)):
-			words[i] = words[i].upper()
+		user_command = user_command.upper()
 
-		# Move North
-		if "NORTH" in words:
-			mess.code = 1
-
-		# Move South
-		elif "SOUTH" in words:
-			mess.code = 2
-
-		# Move East
-		elif "EAST" in words:
-			mess.code = 3
-
-		# Move West
-		elif "WEST" in words:
-			mess.code = 4
-
-		# User wants to know location
-		elif "LOOK" in words:
-			mess.code = 5
-
-		elif "INVENTORY" in words:
-			mess.code = 6
-
-		elif "SELECT" in words:
-			if words.index("SELECT") != len(words) - 1:
-				mess.code = 7
-				mess.message = words[words.index("SELECT") + 1]
+		#Make list of words
+		command_list = user_command.split()
+		
+		#Check for regular and special commands, return relevant message 
+		for i in range(0,len(command_list)):
+			if command_list[i] in special_commands and i+1 < len(command_list):
+				command_list[i] = command_list[i] + " " + command_list[i+1]
+				return command_list[i]
+			elif command_list[i] in regular_commands:
+				return regular_commands[command_list[i]]
 			else:
-				mess.code = 0
-
-		elif "DROP" in words:
-			if words.index("DROP") != len(words) - 1:
-				mess.code = 8
-				mess.message = words[words.index("DROP") + 1]
-			else:
-				mess.code = 0
-
-		elif "CREATE" in words:
-			if words.index("CREATE") != len(words) - 1:
-				mess.code = 10
-				mess.message = words[words.index("CREATE") + 1]
-			else:
-				mess.code = 0
-		# User command not understood
-		else:
-			mess.code = 0
-
-		return mess
+				return "ERR_CMD"
 
 	def update(self, upd):
 		# Read from command line
 		a = input()
 
 		# Send instructions to update
-		upd.messages.append(self.parse_words(a))
+		upd.messages.append(self.generate_message(a))
