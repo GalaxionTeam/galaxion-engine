@@ -1,5 +1,5 @@
 from message import Message
-
+import code
 # Class that updates game stat
 class Update:
 	def __init__(self):

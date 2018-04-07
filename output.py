@@ -1,3 +1,4 @@
+import code
 # Class for game output
 class Output:
 	def __init__(self):

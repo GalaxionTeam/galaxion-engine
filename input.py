@@ -1,5 +1,5 @@
 from message import Message
-
+import code
 # Class that reads user input
 class Input:
 	def __init__(self):
