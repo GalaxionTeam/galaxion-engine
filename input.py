@@ -1,5 +1,5 @@
 from message import Message
-
+import code
 # Class that reads user input
 class Input:
 	def __init__(self):
@@ -16,20 +16,20 @@ class Input:
 					if len(words) == 4:
 						args.append(words[2])
 						args.append(words[3])
-						mess.code = 14
+						mess.code = code.EROOM
 					else:
-						mess.code = 0
+						mess.code = code.ERR
 				elif(words[1].upper() == "ITEM"):
 					if len(words) == 5:
 						args.append(words[2])
 						args.append(words[3])
 						args.append(words[4])
-						mess.code = 15
+						mess.code = code.EITEM
 					else:
-						mess.code = 0
+						mess.code = code.ERR
 				else:
 					print("Unrecognized Command")
-					mess.code = 0
+					mess.code = code.ERR
 				mess.args = args
 				return mess
 
@@ -42,50 +42,50 @@ class Input:
 
 		# Move North
 		if "NORTH" in words:
-			mess.code = 1
+			mess.code = code.NORTH
 
 		# Move South
 		elif "SOUTH" in words:
-			mess.code = 2
+			mess.code = code.SOUTH
 
 		# Move East
 		elif "EAST" in words:
-			mess.code = 3
+			mess.code = code.EAST
 
 		# Move West
 		elif "WEST" in words:
-			mess.code = 4
+			mess.code = code.WEST
 
 		# User wants to know location
 		elif "LOOK" in words:
-			mess.code = 5
+			mess.code = code.LOOK
 
 		elif "INVENTORY" in words:
-			mess.code = 6
+			mess.code = code.INVENTORY
 
 		elif "SELECT" in words:
 			if words.index("SELECT") != len(words) - 1:
-				mess.code = 7
+				mess.code = code.SELECT
 				mess.message = words[words.index("SELECT") + 1]
 			else:
-				mess.code = 0
+				mess.code = code.ERR
 
 		elif "DROP" in words:
 			if words.index("DROP") != len(words) - 1:
-				mess.code = 8
+				mess.code = code.DROP
 				mess.message = words[words.index("DROP") + 1]
 			else:
-				mess.code = 0
+				mess.code = code.ERR
 
 		elif "CREATE" in words:
 			if words.index("CREATE") != len(words) - 1:
-				mess.code = 10
+				mess.code = code.CREATE
 				mess.message = words[words.index("CREATE") + 1]
 			else:
-				mess.code = 0
+				mess.code = code.ERR
 		# User command not understood
 		else:
-			mess.code = 0
+			mess.code = code.ERR
 
 		return mess
 

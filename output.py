@@ -1,3 +1,4 @@
+import code
 # Class for game output
 class Output:
 	def __init__(self):
@@ -48,18 +49,19 @@ class Output:
 				print("Room Edited")
 			def Edit_Item():
 				print("Item Edited")
-			options = {0 : err,
-					   1 : North,
-					   2 : South,
-					   3 : East,
-					   4 : West,
-					   5 : Look,
-					   6 : Inventory,
-					   7 : Select,
-					   8 : Drop,
-					   9 : Out,
-					   10: Create,
-					   14: Edit_Room,
-					   15: Edit_Item,
+
+			options = {code.ERR : err,
+					   code.NORTH : North,
+					   code.SOUTH : South,
+					   code.EAST : East,
+					   code.WEST : West,
+					   code.LOOK : Look,
+					   code.INVENTORY : Inventory,
+					   code.SELECT : Select,
+					   code.DROP : Drop,
+					   code.OUT : Out,
+					   code.CREATE : Create,
+					   code.EROOM : Edit_Room,
+					   code.EITEM : Edit_Item,
 					   }
 			options[a.code]()
