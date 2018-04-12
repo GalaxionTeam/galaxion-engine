@@ -1,3 +1,4 @@
+import code
 # Class for game output
 class Output:
 	def __init__(self):
@@ -44,16 +45,16 @@ class Output:
 				print("Out of Bounds")
 			def Create():
 				print(a.message + " created")
-			options = {0 : err,
-					   1 : North,
-					   2 : South,
-					   3 : East,
-					   4 : West,
-					   5 : Look,
-					   6 : Inventory,
-					   7 : Select,
-					   8 : Drop,
-					   9 : Out,
-					   10: Create,
+			options = {code.ERR : err,
+					   code.NORTH : North,
+					   code.SOUTH : South,
+					   code.EAST : East,
+					   code.WEST : West,
+					   code.LOOK : Look,
+					   code.INVENTORY : Inventory,
+					   code.SELECT : Select,
+					   code.DROP : Drop,
+					   code.OUT : Out,
+					   code.CREATE: Create,
 					   }
 			options[a.code]()
