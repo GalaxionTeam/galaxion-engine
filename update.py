@@ -71,13 +71,13 @@ class Update:
 				pla.room.items.append(Item(a.message))
 				#print(str(pla.room.items))
 			def Delete():
-				mess.code = 14
+				mess.code = code.DELETE
 				mess.message = a.message
 				for b in pla.room.items:
-					if a.message == b.name:
+					if a.message == b.name.upper():
 						pla.room.items.pop(pla.room.items.index(b))
 						#print(str(pla.room.items))
-            
+
 			options = {code.ERR : err,
 					   code.NORTH : North,
 					   code.SOUTH : South,
@@ -88,7 +88,7 @@ class Update:
 					   code.SELECT : Select,
 					   code.DROP : Drop,
 					   code.CREATE : Create,
-             code.DELETE : Delete,
+             		   code.DELETE : Delete,
 					   }
 			options[a.code]()
 

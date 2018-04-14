@@ -57,7 +57,6 @@ class Input:
 				mess.code = code.CREATE
 				mess.message = words[words.index("CREATE") + 1]
 			else:
-
 				mess.code = code.ERR
 		elif "DELETE" in words:
 			if words.index("DELETE") != len(words) - 1:

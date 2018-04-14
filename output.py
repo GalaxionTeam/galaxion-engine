@@ -47,18 +47,7 @@ class Output:
 				print(a.message + " created")
 			def Delete():
 				print(a.message + " deleted")
-			options = {0 : err,
-					   1 : North,
-					   2 : South,
-					   3 : East,
-					   4 : West,
-					   5 : Look,
-					   6 : Inventory,
-					   7 : Select,
-					   8 : Drop,
-					   9 : Out,
-					   10: Create,
-					   14: Delete,
+
 			options = {code.ERR : err,
 					   code.NORTH : North,
 					   code.SOUTH : South,
@@ -70,6 +59,6 @@ class Output:
 					   code.DROP : Drop,
 					   code.OUT : Out,
 					   code.CREATE: Create,
-             code.DELETE: Delete,
+             		   code.DELETE: Delete,
 					   }
 			options[a.code]()

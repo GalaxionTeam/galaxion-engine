@@ -9,3 +9,4 @@ SELECT = 7
 DROP = 8
 OUT = 9
 CREATE = 10
+DELETE = 20
