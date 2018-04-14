@@ -1,3 +1,4 @@
+import code
 # Class for game output
 class Output:
 	def __init__(self):
@@ -58,5 +59,17 @@ class Output:
 					   9 : Out,
 					   10: Create,
 					   14: Delete,
+			options = {code.ERR : err,
+					   code.NORTH : North,
+					   code.SOUTH : South,
+					   code.EAST : East,
+					   code.WEST : West,
+					   code.LOOK : Look,
+					   code.INVENTORY : Inventory,
+					   code.SELECT : Select,
+					   code.DROP : Drop,
+					   code.OUT : Out,
+					   code.CREATE: Create,
+             code.DELETE: Delete,
 					   }
 			options[a.code]()
