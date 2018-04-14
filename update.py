@@ -47,6 +47,7 @@ class Update:
 				mess.code = code.LOOK
 				mess.message = pla.room.name
 				mess.args = pla.room.items
+				#print(str(pla.room.items))
 			def Inventory():
 				mess.code = code.INVENTORY
 				mess.args = pla.items
@@ -68,6 +69,14 @@ class Update:
 				mess.code = code.CREATE
 				mess.message = a.message
 				pla.room.items.append(Item(a.message))
+				#print(str(pla.room.items))
+			def Delete():
+				mess.code = code.DELETE
+				mess.message = a.message
+				for b in pla.room.items:
+					if a.message == b.name.upper():
+						pla.room.items.pop(pla.room.items.index(b))
+						#print(str(pla.room.items))
 
 			def Edit_Room():
 				mess.code = code.EROOM
@@ -108,6 +117,7 @@ class Update:
 					   code.SELECT : Select,
 					   code.DROP : Drop,
 					   code.CREATE : Create,
+             		                   code.DELETE : Delete,
 					   code.EROOM : Edit_Room,
 					   code.EITEM : Edit_Item,
 					   }

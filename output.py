@@ -45,6 +45,8 @@ class Output:
 				print("Out of Bounds")
 			def Create():
 				print(a.message + " created")
+			def Delete():
+				print(a.message + " deleted")
 			def Edit_Room():
 				print("Room Edited")
 			def Edit_Item():
@@ -60,7 +62,8 @@ class Output:
 					   code.SELECT : Select,
 					   code.DROP : Drop,
 					   code.OUT : Out,
-					   code.CREATE : Create,
+					   code.CREATE: Create,
+             		                   code.DELETE: Delete,
 					   code.EROOM : Edit_Room,
 					   code.EITEM : Edit_Item,
 					   }
