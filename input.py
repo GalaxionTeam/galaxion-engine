@@ -78,4 +78,3 @@ class Input:
 
 		# Send instructions to update
 		upd.messages.append(self.parse_words(a))
-fast
