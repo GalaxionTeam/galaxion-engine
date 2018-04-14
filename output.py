@@ -63,7 +63,7 @@ class Output:
 					   code.DROP : Drop,
 					   code.OUT : Out,
 					   code.CREATE: Create,
-             		   code.DELETE: Delete,
+             		                   code.DELETE: Delete,
 					   code.EROOM : Edit_Room,
 					   code.EITEM : Edit_Item,
 					   }
