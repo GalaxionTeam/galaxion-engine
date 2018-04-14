@@ -117,7 +117,7 @@ class Update:
 					   code.SELECT : Select,
 					   code.DROP : Drop,
 					   code.CREATE : Create,
-             		   code.DELETE : Delete,
+             		                   code.DELETE : Delete,
 					   code.EROOM : Edit_Room,
 					   code.EITEM : Edit_Item,
 					   }
