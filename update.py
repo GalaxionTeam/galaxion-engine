@@ -78,6 +78,35 @@ class Update:
 						pla.room.items.pop(pla.room.items.index(b))
 						#print(str(pla.room.items))
 
+			def Edit_Room():
+				mess.code = code.EROOM
+				if a.args[0].upper() == "NAME":
+					pla.room.name = a.args[1]
+				elif a.args[0].upper() == "DESCRIPTION":
+					pla.room.description = a.args[1]
+				else:
+					mess.code = code.ERR
+
+			def Edit_Item():
+				mess.code = code.EITEM
+				inside = False
+				loc = 0
+				for i in range(len(pla.room.items)):
+					if (a.args[0].upper() == pla.room.items[i].name.upper()):
+						inside = True
+						loc = i
+				if inside:
+					if a.args[1].upper() == "NAME":
+						pla.room.items[loc].name = a.args[2]
+					elif a.args[1].upper() == "DESCRIPTION":
+						pla.room.items[loc].description = a.args[2]
+					elif a.args[1].upper() == "LOCATION DESCRIPTION":
+						pla.room.items[loc].location_desc = a.args[2]
+					else:
+						mess.code = code.ERR
+				else:
+					mess.code = code.ERR
+
 			options = {code.ERR : err,
 					   code.NORTH : North,
 					   code.SOUTH : South,
@@ -89,6 +118,8 @@ class Update:
 					   code.DROP : Drop,
 					   code.CREATE : Create,
              		   code.DELETE : Delete,
+					   code.EROOM : Edit_Room,
+					   code.EITEM : Edit_Item,
 					   }
 			options[a.code]()
 
