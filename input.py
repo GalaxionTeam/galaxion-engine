@@ -44,6 +44,7 @@ class Input:
 				mess.message = words[words.index("SELECT") + 1]
 			else:
 				mess.code = code.ERR
+				mess.message = "Item cannot be selected"
 
 		elif "DROP" in words:
 			if words.index("DROP") != len(words) - 1:
@@ -51,6 +52,7 @@ class Input:
 				mess.message = words[words.index("DROP") + 1]
 			else:
 				mess.code = code.ERR
+				mess.message = "Item cannot be dropped"
 
 		elif "CREATE" in words:
 			if words.index("CREATE") != len(words) - 1:
@@ -58,9 +60,11 @@ class Input:
 				mess.message = words[words.index("CREATE") + 1]
 			else:
 				mess.code = code.ERR
+				mess.message = "Item cannot be created"
 		# User command not understood
 		else:
 			mess.code = code.ERR
+			mess.message = "Error"
 
 		return mess
 
