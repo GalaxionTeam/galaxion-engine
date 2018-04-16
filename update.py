@@ -54,17 +54,17 @@ class Update:
 			def Select():
 				mess.code = code.ERR
 				for b in pla.room.items:
-					if a.message == b.name:
+					if a.message == b.name.upper():
 						pla.items.append(pla.room.items.pop(pla.room.items.index(b)))
 						mess.code = code.SELECT
-						mess.message = a.message
+						mess.message = b.name
 			def Drop():
 				mess.code = code.DROP
 				for b in pla.items:
-					if a.message == b.name:
+					if a.message == b.name.upper():
 						pla.room.items.append(pla.items.pop(pla.items.index(b)))
 						mess.code = code.DROP
-						mess.message = a.message
+						mess.message = b.name
 			def Create():
 				mess.code = code.CREATE
 				mess.message = a.message
