@@ -8,6 +8,31 @@ class Input:
 	def parse_words(self, a):
 		mess = Message()
 
+		if len(a) > 0:
+			if a[0] == '~':
+				words = a.split('~')
+				args = []
+				if(words[1].upper() == "ROOM"):
+					if len(words) == 4:
+						args.append(words[2])
+						args.append(words[3])
+						mess.code = code.EROOM
+					else:
+						mess.code = code.ERR
+				elif(words[1].upper() == "ITEM"):
+					if len(words) == 5:
+						args.append(words[2])
+						args.append(words[3])
+						args.append(words[4])
+						mess.code = code.EITEM
+					else:
+						mess.code = code.ERR
+				else:
+					print("Unrecognized Command")
+					mess.code = code.ERR
+				mess.args = args
+				return mess
+
 		# Split words into list
 		words = a.split()
 
@@ -61,6 +86,15 @@ class Input:
 			else:
 				mess.code = code.ERR
 				mess.message = "Item cannot be created"
+
+		elif "DELETE" in words:
+			if words.index("DELETE") != len(words) - 1:
+				mess.code = code.DELETE
+				mess.message = words[words.index("DELETE") + 1]
+			else:
+				mess.code = code.ERR
+				mess.message = "Item cannot be deleted"
+
 		# User command not understood
 		else:
 			mess.code = code.ERR
