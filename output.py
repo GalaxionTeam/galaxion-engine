@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 from assets.room import Room
 from assets.item import Item
 
+=======
+import code
+>>>>>>> 35d38cb9c26e12f6a65c7b83fb6e8d060ed3ba43
 # Class for game output
 class Output:
 	def __init__(self):
@@ -27,20 +31,26 @@ class Output:
 				print("West 1 Space")
 			def Look():
 				# Should implement an error code here to make this easier
-				if a.debug == "NO INPUT":
-					print("You didn't say what to look at!")
-				elif type(a.args[0]) is Room:
-					room = a.args[0]
-					print("You are in: " + room.name)
-					print("You are at: ({}, {})".format(room.x, room.y))
-					# Prints the Room description
-					print(a.message)
+				#if a.debug == "NO INPUT":
+				#	print("You didn't say what to look at!")
+				#elif type(a.args[0]) is Room:
+				#	room = a.args[0]
+				#	print("You are in: " + room.name)
+				#	print("You are at: ({}, {})".format(room.x, room.y))
+				#	# Prints the Room description
+				#	print(a.message)
 				# Gotta be a better way of checking this
-				elif a.args.pop() == 'ITEMS':
-					# Prints "Following items in room:" message
-					print(a.message)
-					for item in a.args:
-						print(item)
+				#elif a.args.pop() == 'ITEMS':
+				#	# Prints "Following items in room:" message
+				#	print(a.message)
+				#	for item in a.args:
+				#		print(item)
+				#print(a.room.description)
+				print("Player located at " + a.message)
+				if len(a.args) > 0:
+					print("Items in room: ")
+					for b in a.args:
+						print(b.name +  "\n" + b.location_desc)
 			def Inventory():
 				if len(a.args) > 0:
 					print("Items in inventory:")
@@ -56,16 +66,26 @@ class Output:
 				print("Out of Bounds")
 			def Create():
 				print(a.message + " created")
-			options = {0 : err,
-					   1 : North,
-					   2 : South,
-					   3 : East,
-					   4 : West,
-					   5 : Look,
-					   6 : Inventory,
-					   7 : Select,
-					   8 : Drop,
-					   9 : Out,
-					   10: Create,
+			def Delete():
+				print(a.message + " deleted")
+			def Edit_Room():
+				print("Room Edited")
+			def Edit_Item():
+				print("Item Edited")
+
+			options = {code.ERR : err,
+					   code.NORTH : North,
+					   code.SOUTH : South,
+					   code.EAST : East,
+					   code.WEST : West,
+					   code.LOOK : Look,
+					   code.INVENTORY : Inventory,
+					   code.SELECT : Select,
+					   code.DROP : Drop,
+					   code.OUT : Out,
+					   code.CREATE: Create,
+             		                   code.DELETE: Delete,
+					   code.EROOM : Edit_Room,
+					   code.EITEM : Edit_Item,
 					   }
 			options[a.code]()
