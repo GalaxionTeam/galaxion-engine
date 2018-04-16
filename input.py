@@ -56,14 +56,12 @@ class Input:
 
 		# User wants to know location
 		elif "LOOK" in words:
-<<<<<<< HEAD
-			mess.code = 5
-			# Passes every token after "LOOK" as a list of message args
-			arg_index = words.index("LOOK") + 1
-			mess.args = words[arg_index::]
-=======
-			mess.code = code.LOOK
->>>>>>> 35d38cb9c26e12f6a65c7b83fb6e8d060ed3ba43
+			if words.index("LOOK") != len(words) - 1:
+				mess.code = code.LOOKITEM
+				mess.message = words[words.index("LOOK") + 1]
+			else:
+				mess.code = code.LOOK
+			
 
 		elif "INVENTORY" in words:
 			mess.code = code.INVENTORY

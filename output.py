@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-from assets.room import Room
-from assets.item import Item
-
-=======
 import code
->>>>>>> 35d38cb9c26e12f6a65c7b83fb6e8d060ed3ba43
 # Class for game output
 class Output:
 	def __init__(self):
@@ -30,27 +24,13 @@ class Output:
 			def West():
 				print("West 1 Space")
 			def Look():
-				# Should implement an error code here to make this easier
-				#if a.debug == "NO INPUT":
-				#	print("You didn't say what to look at!")
-				#elif type(a.args[0]) is Room:
-				#	room = a.args[0]
-				#	print("You are in: " + room.name)
-				#	print("You are at: ({}, {})".format(room.x, room.y))
-				#	# Prints the Room description
-				#	print(a.message)
-				# Gotta be a better way of checking this
-				#elif a.args.pop() == 'ITEMS':
-				#	# Prints "Following items in room:" message
-				#	print(a.message)
-				#	for item in a.args:
-				#		print(item)
-				#print(a.room.description)
 				print("Player located at " + a.message)
 				if len(a.args) > 0:
 					print("Items in room: ")
 					for b in a.args:
 						print(b.name +  "\n" + b.location_desc)
+			def Look_Item():
+				print(a.args[0].name + " " + a.args[0].description)
 			def Inventory():
 				if len(a.args) > 0:
 					print("Items in inventory:")
@@ -84,8 +64,9 @@ class Output:
 					   code.DROP : Drop,
 					   code.OUT : Out,
 					   code.CREATE: Create,
-             		                   code.DELETE: Delete,
+             		   code.DELETE: Delete,
 					   code.EROOM : Edit_Room,
 					   code.EITEM : Edit_Item,
+					   code.LOOKITEM : Look_Item,
 					   }
 			options[a.code]()
