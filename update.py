@@ -1,6 +1,8 @@
+import json
 from message import Message
 import code
 from assets.item import Item
+from assets.world import World
 from assets.room import Room
 
 # Class that updates game stat
@@ -76,6 +78,72 @@ class Update:
 				mess.code = code.CREATE
 				mess.message = a.message
 				pla.room.items.append(Item(a.message))
+			def Save():
+				mess.code = code.SAVE
+				item_x = []
+				item_y = []
+				item_name = []
+				item_description = []
+				item_loc_des = []
+				room_name = []
+				room_description = []
+				for d in range(len(world.grid)):
+					for b in range(len(world.grid[0])):
+						room_name.append(world.grid[d][b].name)
+						room_description.append(world.grid[d][b].description)
+						for c in world.grid[d][b].items:
+							# Item x/y coordinate
+							item_x.append(world.grid[d][b].x)
+							item_y.append(world.grid[d][b].y)
+							item_name.append(c.name)
+							item_description.append(c.description)
+							item_loc_des.append(c.location_desc)
+
+				for d in pla.items:
+					# If item is in player's inventory, x and y = -1
+					item_x.append(-1)
+					item_y.append(-1)
+					item_name.append(d.name)
+					item_description.append(d.description)
+					item_loc_des.append(d.location_desc)
+				json_data = {
+					"Player" : {"x_loc" : pla.room.x, "y_loc" : pla.room.y},
+					"Items" : {"x_loc" : item_x, "y_loc" : item_y, "name" : item_name, "description" : item_description, "loc_des" : item_loc_des},
+					"World" : {"x_dim" : len(world.grid), "y_dim" : len(world.grid[0])},
+					"Room" : {"name" : room_name, "description" : room_description}
+				}
+				with open(a.message.lower() + ".json", 'w') as outfile:
+ 					json.dump(json_data,outfile)
+
+			def Load():
+				mess.code = code.LOAD
+
+				with open(a.message.lower() + ".json", "r") as read:
+					json_data = json.load(read)
+				item_x = json_data["Items"]["x_loc"]
+				item_y = json_data["Items"]["y_loc"]
+				item_name = json_data["Items"]["name"]
+				item_description = json_data["Items"]["description"]
+				item_loc_des = json_data["Items"]["loc_des"]
+				room_name = json_data["Room"]["name"]
+				room_description = json_data["Room"]["description"]
+				world.copy(json_data["World"]["x_dim"],json_data["World"]["y_dim"])
+				pla.room = world.grid[json_data["Player"]["x_loc"]][json_data["Player"]["y_loc"]]
+				room = 0
+				for d in range(json_data["World"]["x_dim"]):
+					for b in range(json_data["World"]["y_dim"]):
+						if room < len(room_name):
+							world.grid[d][b].name = room_name[room]
+							world.grid[d][b].description = room_description[room]
+						room += 1
+				pla.items.clear()
+
+				for d in range(len(item_x)):
+					# If x/y = -1, item in inventory, else item in specific x/y
+					if item_x[d] == -1:
+						pla.items.append(Item(item_name[d],item_description[d]),item_loc_des[d])
+					else:
+						world.grid[item_x[d]][item_y[d]].items.append(Item(item_name[d],item_description[d],item_loc_des[d]))
 				#print(str(pla.room.items))
 			def Delete():
 				mess.code = code.DELETE
@@ -124,6 +192,8 @@ class Update:
 					   code.SELECT : Select,
 					   code.DROP : Drop,
 					   code.CREATE : Create,
+					   code.SAVE : Save,
+					   code.LOAD : Load,
              		   code.DELETE : Delete,
 					   code.EROOM : Edit_Room,
 					   code.EITEM : Edit_Item,

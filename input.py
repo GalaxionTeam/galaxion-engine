@@ -88,6 +88,22 @@ class Input:
 				mess.message = words[words.index("CREATE") + 1]
 			else:
 				mess.code = code.ERR
+
+		elif "SAVE" in words:
+			if words.index("SAVE") != len(words) - 1:
+				mess.code = code.SAVE
+				mess.message = words[words.index("SAVE") + 1]
+			else:
+				mess.code = code.SAVE
+				mess.message = "data"
+
+		elif "LOAD" in words:
+			if words.index("LOAD") != len(words) - 1:
+				mess.code = code.LOAD
+				mess.message = words[words.index("LOAD") + 1]
+			else:
+				mess.code = code.LOAD
+				mess.message = "data"
 				mess.message = "Item cannot be created"
 
 		elif "DELETE" in words:
