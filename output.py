@@ -13,7 +13,7 @@ class Output:
 			a = self.messages.pop()
 
 			def err():
-				print("Command not recognized")
+				print(a.message)
 				#I'm pretty sure we handle this case back in input
 			def North():
 				print("North 1 Space")

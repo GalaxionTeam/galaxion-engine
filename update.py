@@ -20,6 +20,7 @@ class Update:
 
 			def err():
 				mess.code = code.ERR
+				mess.message = a.message
 			def North():
 				if pla.room.y == len(world.grid[0]) - 1:
 					mess.code = code.OUT
