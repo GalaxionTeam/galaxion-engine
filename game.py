@@ -3,7 +3,8 @@ from update import Update
 from assets.player import Player
 from output import Output
 from assets.world import World
-	
+import sys
+
 class Game:
 	def __init__(self):
 		self.inp = Input()
@@ -18,9 +19,9 @@ class Game:
 		self.out.update()
 
 if __name__ == "__main__":
-	
+
 	game = Game()
-		
+
 	# Call update functions in a forever loop
 	while True:
 		game.update()
