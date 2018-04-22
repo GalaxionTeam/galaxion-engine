@@ -8,6 +8,7 @@ class Input:
 	def parse_words(self, a):
 		mess = Message()
 
+
 		if len(a) > 0:
 			if a[0] == '~':
 				words = a.split('~')
@@ -33,13 +34,10 @@ class Input:
 				mess.args = args
 				return mess
 
-		# Split words into list
-		words = a.split()
+		# Capitalize all words and split into list
+		words = a.upper().split()
 
-		# Make all words uppercase
-		for i in range(0,len(words)):
-			words[i] = words[i].upper()
-
+		# Assign message code based on identified keywords
 		# Move North
 		if "NORTH" in words:
 			mess.code = code.NORTH
@@ -58,7 +56,12 @@ class Input:
 
 		# User wants to know location
 		elif "LOOK" in words:
-			mess.code = code.LOOK
+			if words.index("LOOK") != len(words) - 1:
+				mess.code = code.LOOKITEM
+				mess.message = words[words.index("LOOK") + 1]
+			else:
+				mess.code = code.LOOK
+			
 
 		elif "INVENTORY" in words:
 			mess.code = code.INVENTORY

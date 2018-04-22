@@ -24,12 +24,13 @@ class Output:
 			def West():
 				print("West 1 Space")
 			def Look():
-				#print(a.room.description)
 				print("Player located at " + a.message)
 				if len(a.args) > 0:
 					print("Items in room: ")
 					for b in a.args:
 						print(b.name +  "\n" + b.location_desc)
+			def Look_Item():
+				print(a.args[0].name + " " + a.args[0].description)
 			def Inventory():
 				if len(a.args) > 0:
 					print("Items in inventory:")
@@ -63,8 +64,9 @@ class Output:
 					   code.DROP : Drop,
 					   code.OUT : Out,
 					   code.CREATE: Create,
-             		                   code.DELETE: Delete,
+             		   code.DELETE: Delete,
 					   code.EROOM : Edit_Room,
 					   code.EITEM : Edit_Item,
+					   code.LOOKITEM : Look_Item,
 					   }
 			options[a.code]()
