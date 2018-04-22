@@ -22,5 +22,8 @@ if __name__ == "__main__":
 	game = Game()
 		
 	# Call update functions in a forever loop
-	while True:
-		game.update()
+	try:
+		while True:
+			game.update()
+	except KeyboardInterrupt:
+		print("\nThanks for playing!")
