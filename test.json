@@ -1,0 +1,1 @@
+{"Player": {"x_loc": 0, "y_loc": 0}, "Items": {"x_loc": [0], "y_loc": [0], "name": ["Book"], "description": ["thing"], "loc_des": [""]}, "World": {"x_dim": 3, "y_dim": 5}, "Room": {"name": ["heaven", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "description": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]}}

@@ -3,7 +3,7 @@ class Room:
 		if items is None:
 			items = []
 		self.items = items
-		self.name = " (" + str(x) + ", " + str(y) + ")"
+		self.name = name
 		self.description = description
 		self.x = x
 		self.y = y

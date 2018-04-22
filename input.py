@@ -8,13 +8,36 @@ class Input:
 	def parse_words(self, a):
 		mess = Message()
 
-		# Split words into list
-		words = a.split()
 
-		# Make all words uppercase
-		for i in range(0,len(words)):
-			words[i] = words[i].upper()
+		if len(a) > 0:
+			if a[0] == '~':
+				words = a.split('~')
+				args = []
+				if(words[1].upper() == "ROOM"):
+					if len(words) == 4:
+						args.append(words[2])
+						args.append(words[3])
+						mess.code = code.EROOM
+					else:
+						mess.code = code.ERR
+				elif(words[1].upper() == "ITEM"):
+					if len(words) == 5:
+						args.append(words[2])
+						args.append(words[3])
+						args.append(words[4])
+						mess.code = code.EITEM
+					else:
+						mess.code = code.ERR
+				else:
+					print("Unrecognized Command")
+					mess.code = code.ERR
+				mess.args = args
+				return mess
 
+		# Capitalize all words and split into list
+		words = a.upper().split()
+
+		# Assign message code based on identified keywords
 		# Move North
 		if "NORTH" in words:
 			mess.code = code.NORTH
@@ -33,7 +56,12 @@ class Input:
 
 		# User wants to know location
 		elif "LOOK" in words:
-			mess.code = code.LOOK
+			if words.index("LOOK") != len(words) - 1:
+				mess.code = code.LOOKITEM
+				mess.message = words[words.index("LOOK") + 1]
+			else:
+				mess.code = code.LOOK
+			
 
 		elif "INVENTORY" in words:
 			mess.code = code.INVENTORY
@@ -44,6 +72,7 @@ class Input:
 				mess.message = words[words.index("SELECT") + 1]
 			else:
 				mess.code = code.ERR
+				mess.message = "Item cannot be selected"
 
 		elif "DROP" in words:
 			if words.index("DROP") != len(words) - 1:
@@ -51,6 +80,7 @@ class Input:
 				mess.message = words[words.index("DROP") + 1]
 			else:
 				mess.code = code.ERR
+				mess.message = "Item cannot be dropped"
 
 		elif "CREATE" in words:
 			if words.index("CREATE") != len(words) - 1:
@@ -74,9 +104,20 @@ class Input:
 			else:
 				mess.code = code.LOAD
 				mess.message = "data"
+				mess.message = "Item cannot be created"
+
+		elif "DELETE" in words:
+			if words.index("DELETE") != len(words) - 1:
+				mess.code = code.DELETE
+				mess.message = words[words.index("DELETE") + 1]
+			else:
+				mess.code = code.ERR
+				mess.message = "Item cannot be deleted"
+
 		# User command not understood
 		else:
 			mess.code = code.ERR
+			mess.message = "Error"
 
 		return mess
 

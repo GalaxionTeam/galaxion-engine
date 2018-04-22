@@ -13,7 +13,7 @@ class Output:
 			a = self.messages.pop()
 
 			def err():
-				print("Command not recognized")
+				print(a.message)
 				#I'm pretty sure we handle this case back in input
 			def North():
 				print("North 1 Space")
@@ -24,12 +24,13 @@ class Output:
 			def West():
 				print("West 1 Space")
 			def Look():
-				#print(a.room.description)
-				print("Player located at position" + a.message)
+				print("Player located at " + a.message)
 				if len(a.args) > 0:
 					print("Items in room: ")
 					for b in a.args:
 						print(b.name +  "\n" + b.location_desc)
+			def Look_Item():
+				print(a.args[0].name + " " + a.args[0].description)
 			def Inventory():
 				if len(a.args) > 0:
 					print("Items in inventory:")
@@ -49,6 +50,12 @@ class Output:
 				print("Saved")
 			def Load():
 				print("Loaded")
+			def Delete():
+				print(a.message + " deleted")
+			def Edit_Room():
+				print("Room Edited")
+			def Edit_Item():
+				print("Item Edited")
 
 			options = {code.ERR : err,
 					   code.NORTH : North,
@@ -63,5 +70,9 @@ class Output:
 					   code.CREATE: Create,
 					   code.SAVE : Save,
 					   code.LOAD : Load,
+             		   code.DELETE: Delete,
+					   code.EROOM : Edit_Room,
+					   code.EITEM : Edit_Item,
+					   code.LOOKITEM : Look_Item,
 					   }
 			options[a.code]()
