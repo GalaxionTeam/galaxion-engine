@@ -144,14 +144,13 @@ class Update:
 						pla.items.append(Item(item_name[d],item_description[d]),item_loc_des[d])
 					else:
 						world.grid[item_x[d]][item_y[d]].items.append(Item(item_name[d],item_description[d],item_loc_des[d]))
-				#print(str(pla.room.items))
+						
 			def Delete():
 				mess.code = code.DELETE
 				mess.message = a.message
 				for b in pla.room.items:
-					if a.message == b.name.upper():
+					if a.message.upper() == b.name.upper():
 						pla.room.items.pop(pla.room.items.index(b))
-						#print(str(pla.room.items))
 
 			def Edit_Room():
 				mess.code = code.EROOM
