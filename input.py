@@ -61,7 +61,7 @@ class Input:
 				mess.message = words[words.index("LOOK") + 1]
 			else:
 				mess.code = code.LOOK
-			
+
 
 		elif "INVENTORY" in words:
 			mess.code = code.INVENTORY
@@ -113,6 +113,9 @@ class Input:
 			else:
 				mess.code = code.ERR
 				mess.message = "Item cannot be deleted"
+
+		elif "EXIT" in words:
+			mess.code = code.EXIT
 
 		# User command not understood
 		else:

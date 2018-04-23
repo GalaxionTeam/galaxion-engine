@@ -57,6 +57,7 @@ class Output:
 			def Edit_Item():
 				print("Item Edited")
 
+
 			options = {code.ERR : err,
 					   code.NORTH : North,
 					   code.SOUTH : South,
@@ -74,5 +75,6 @@ class Output:
 					   code.EROOM : Edit_Room,
 					   code.EITEM : Edit_Item,
 					   code.LOOKITEM : Look_Item,
+					   code.EXIT : Exit
 					   }
 			options[a.code]()
