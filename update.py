@@ -4,7 +4,6 @@ import code
 from assets.item import Item
 from assets.world import World
 from assets.room import Room
-import sys
 
 # Class that updates game stat
 class Update:
@@ -180,7 +179,6 @@ class Update:
 						pla.room.items[loc].location_desc = a.args[2]
 					else:
 						mess.code = code.ERR
-
 				else:
 					mess.code = code.ERR
 
@@ -200,7 +198,6 @@ class Update:
 					   code.EROOM : Edit_Room,
 					   code.EITEM : Edit_Item,
 					   code.LOOKITEM : Look_Item,
-					   code.EXIT : exit
 					   }
 			options[a.code]()
 
