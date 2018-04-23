@@ -28,8 +28,16 @@ class Input:
 						mess.code = code.EITEM
 					else:
 						mess.code = code.ERR
+				elif(words[1].upper() == "USE"):
+					if len(words) == 5:
+						args.append(words[2])
+						args.append(words[3])
+						args.append(words[4])
+						mess.code = code.CUSE
+					else:
+						mess.code = code.ERR
 				else:
-					print("Unrecognized Command")
+					print("Unrecognized Command!")
 					mess.code = code.ERR
 				mess.args = args
 				return mess
@@ -113,6 +121,14 @@ class Input:
 			else:
 				mess.code = code.ERR
 				mess.message = "Item cannot be deleted"
+		elif "USE" in words:
+			if words.index("USE") != len(words) - 2:
+				mess.code = code.USE
+				mess.args.append(words[words.index("USE") + 1])
+				mess.args.append(words[words.index("USE") + 2])
+			else:
+				mess.code = code.ERR
+				mess.message = "Incorrect Syntax"
 
 		# User command not understood
 		else:

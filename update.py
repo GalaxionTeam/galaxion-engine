@@ -162,6 +162,46 @@ class Update:
 				else:
 					mess.code = code.ERR
 
+			def Create_Use():
+				mess.code = code.CUSE
+
+				with open('use.json', 'r') as read_file:
+					data = json.load(read_file)
+				try:
+					data[a.args[0].upper()][a.args[1].upper()] = a.args[2]
+				except:
+					data.update({a.args[0].upper() : {a.args[1].upper() : a.args[2]}})
+				with open("use.json", 'w') as outfile:
+ 					json.dump(data,outfile)
+			
+			def Use():
+				a_in_room = False
+				b_in_room = False
+				for b in pla.items:
+					if a.args[0] == b.name.upper():
+						a_in_room = True
+					if a.args[1] == b.name.upper():
+						b_in_room = True
+				for b in pla.room.items:
+					if a.args[0] == b.name.upper():
+						a_in_room = True
+					if a.args[1] == b.name.upper():
+						b_in_room = True
+				if a.args[1] == pla.room.name.upper():
+					b_in_room = True
+				if a_in_room and b_in_room:
+					with open('use.json', 'r') as read_file:
+						data = json.load(read_file)
+					try:
+						mess.message = data[a.args[0].upper()][a.args[1].upper()]
+						mess.code = code.USE
+					except:
+						mess.message = "Use not defined"
+						mess.code = code.ERR
+				else:
+					mess.code = code.ERR
+					mess.message = "Items not in room"
+
 			def Edit_Item():
 				mess.code = code.EITEM
 				inside = False
@@ -193,10 +233,12 @@ class Update:
 					   code.DROP : Drop,
 					   code.CREATE : Create,
 					   code.SAVE : Save,
+					   code.USE : Use,
 					   code.LOAD : Load,
              		   code.DELETE : Delete,
 					   code.EROOM : Edit_Room,
 					   code.EITEM : Edit_Item,
+					   code.CUSE : Create_Use,
 					   code.LOOKITEM : Look_Item,
 					   }
 			options[a.code]()

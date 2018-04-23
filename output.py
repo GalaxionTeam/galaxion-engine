@@ -52,6 +52,10 @@ class Output:
 				print("Loaded")
 			def Delete():
 				print(a.message + " deleted")
+			def Create_Use():
+				print("Use created")
+			def Use():
+				print(a.message)
 			def Edit_Room():
 				print("Room Edited")
 			def Edit_Item():
@@ -68,9 +72,11 @@ class Output:
 					   code.DROP : Drop,
 					   code.OUT : Out,
 					   code.CREATE: Create,
+					   code.USE : Use,
 					   code.SAVE : Save,
 					   code.LOAD : Load,
              		   code.DELETE: Delete,
+             		   code.CUSE : Create_Use,
 					   code.EROOM : Edit_Room,
 					   code.EITEM : Edit_Item,
 					   code.LOOKITEM : Look_Item,
