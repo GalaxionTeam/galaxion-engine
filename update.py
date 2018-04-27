@@ -164,39 +164,108 @@ class Update:
 
 			def Create_Use():
 				mess.code = code.CUSE
+				with open('use.json', 'r') as read_file:
+					data = json.load(read_file)
+				data.update({a.args[0].upper() : {"COMPLETE" : False, "MESSAGE" : "", "ANCHOR" : "", "TASKS" : {}}})
+				with open("use.json", 'w') as outfile:
+ 					json.dump(data,outfile)
 
+			
+			def Add_Task():
+				mess.code = code.ATAS
+				with open('use.json', 'r') as read_file:
+					data = json.load(read_file)
+				try:
+					data[a.args[0].upper()]["TASKS"].update({a.args[1].upper() : False})
+					with open("use.json", 'w') as outfile:
+ 						json.dump(data,outfile)
+				except:
+					mess.code = code.ERR
+					mess.message = "Use does not exist"
+
+			def Delete_Use():
+				mess.code = code.DUSE
+				with open('use.json', 'r') as read_file:
+					data = json.load(read_file)
+				try:
+					del data[a.args[0].upper()]
+					with open("use.json", 'w') as outfile:
+ 						json.dump(data,outfile)
+				except:
+					mess.code = code.ERR
+					mess.message = "Use cannot be deleted"
+
+			def Remove_Task():
+				mess.code = code.RTAS
+				with open('use.json', 'r') as read_file:
+					data = json.load(read_file)
+				try:
+					del data[a.args[0].upper()]["TASKS"][a.args[1].upper()]
+					with open("use.json", 'w') as outfile:
+ 						json.dump(data,outfile)
+				except:
+					mess.code = code.ERR
+					mess.message = "Task cannot be removed"
+
+			def Edit_Use():
+				mess.code = code.EUSE
 				with open('use.json', 'r') as read_file:
 					data = json.load(read_file)
 				try:
 					data[a.args[0].upper()][a.args[1].upper()] = a.args[2]
+					with open("use.json", 'w') as outfile:
+ 						json.dump(data,outfile)
 				except:
-					data.update({a.args[0].upper() : {a.args[1].upper() : a.args[2]}})
-				with open("use.json", 'w') as outfile:
- 					json.dump(data,outfile)
-			
+					mess.code = code.ERR
+					mess.message = "Use cannot be edited"
+
 			def Use():
 				a_in_room = False
 				b_in_room = False
 				for b in pla.items:
-					if a.args[0] == b.name.upper():
+					if a.args[0].upper() == b.name.upper():
 						a_in_room = True
-					if a.args[1] == b.name.upper():
+					if a.args[1].upper() == b.name.upper():
 						b_in_room = True
 				for b in pla.room.items:
-					if a.args[0] == b.name.upper():
+					if a.args[0].upper() == b.name.upper():
 						a_in_room = True
-					if a.args[1] == b.name.upper():
+					if a.args[1].upper() == b.name.upper():
 						b_in_room = True
-				if a.args[1] == pla.room.name.upper():
+				if a.args[1].upper() == pla.room.name.upper():
 					b_in_room = True
-				if a_in_room and b_in_room:
+				
+				if a_in_room:
 					with open('use.json', 'r') as read_file:
 						data = json.load(read_file)
 					try:
-						mess.message = data[a.args[0].upper()][a.args[1].upper()]
-						mess.code = code.USE
+						use = data[a.args[1].upper()]
+						if use["ANCHOR"] == "" or (use["ANCHOR"] == a.args[1].upper() and b_in_room):
+							data[a.args[1].upper()]["TASKS"][a.args[0].upper()] = True
+							mess.message = a.args[0].upper() + " used on " + a.args[1].upper()
+							mess.code = code.USE
+						else:
+							mess.code = code.ERR
+							mess.message = "Items not in room"
+						if use["COMPLETE"] == False:
+							complete = True
+							use = use["TASKS"]
+							for key,val in use.items():
+								if val == False:
+									complete = False
+							data[a.args[1].upper()]["COMPLETE"] = complete
+							if complete:
+								mess.message += "\n" + data[a.args[1].upper()]["MESSAGE"]
+							#	for key1 in data:
+							#		for key,val in data[key1]["TASKS"]:
+							#			if key == a.args[1].upper():
+							#				data[key1]["TASKS"][key] = True
+
+
+						with open("use.json", 'w') as outfile:
+ 							json.dump(data,outfile)
 					except:
-						mess.message = "Use not defined"
+						mess.message = "Use not defined!"
 						mess.code = code.ERR
 				else:
 					mess.code = code.ERR
@@ -233,9 +302,13 @@ class Update:
 					   code.DROP : Drop,
 					   code.CREATE : Create,
 					   code.SAVE : Save,
+					   code.EUSE : Edit_Use,
 					   code.USE : Use,
 					   code.LOAD : Load,
              		   code.DELETE : Delete,
+             		   code.DUSE : Delete_Use,
+             		   code.ATAS : Add_Task,
+             		   code.RTAS : Remove_Task,
 					   code.EROOM : Edit_Room,
 					   code.EITEM : Edit_Item,
 					   code.CUSE : Create_Use,

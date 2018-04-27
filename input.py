@@ -29,13 +29,28 @@ class Input:
 					else:
 						mess.code = code.ERR
 				elif(words[1].upper() == "USE"):
-					if len(words) == 5:
-						args.append(words[2])
+					if len(words) == 4 and words[2].upper() == "CREATE":
+						args.append(words[3])
+						mess.code = code.CUSE
+					elif len(words) == 5 and words[2].upper() == "ADD":
+						mess.code = code.ATAS
 						args.append(words[3])
 						args.append(words[4])
-						mess.code = code.CUSE
+					elif len(words) == 5 and words[2].upper() == "REMOVE":
+						mess.code = code.RTAS
+						args.append(words[3])
+						args.append(words[4])
+					elif len(words) == 4 and words[2].upper() == "DELETE":
+						mess.code = code.DUSE
+						args.append(words[3])			
+					elif len(words) == 6 and words[2].upper() == "EDIT":
+						mess.code = code.EUSE
+						args.append(words[3])
+						args.append(words[4])
+						args.append(words[5])
 					else:
 						mess.code = code.ERR
+						mess.message = "Use command not recognized"
 				else:
 					print("Unrecognized Command!")
 					mess.code = code.ERR

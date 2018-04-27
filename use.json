@@ -1,1 +1,1 @@
-{"DOOR": {"SPACESHIP": "You've fixed the spaceship"}}
+{"ROOM": {"COMPLETE": true, "MESSAGE": "YOU'VE FOUND ALL THE OBJECTS", "ANCHOR": "ROOM", "TASKS": {"BOOK": true, "TABLE": true, "PEN": true, "PENCIL": true}}, "WORLD": {"COMPLETE": false, "MESSAGE": "", "ANCHOR": "", "TASKS": {"ROOM": false}}}

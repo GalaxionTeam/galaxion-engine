@@ -52,12 +52,20 @@ class Output:
 				print("Loaded")
 			def Delete():
 				print(a.message + " deleted")
+			def Add_Task():
+				print("Task added")
 			def Create_Use():
 				print("Use created")
+			def Remove_Task():
+				print("Task removed")
+			def Delete_Use():
+				print("Use deleted")
 			def Use():
 				print(a.message)
 			def Edit_Room():
 				print("Room Edited")
+			def Edit_Use():
+				print("Use Edited")
 			def Edit_Item():
 				print("Item Edited")
 
@@ -69,13 +77,17 @@ class Output:
 					   code.LOOK : Look,
 					   code.INVENTORY : Inventory,
 					   code.SELECT : Select,
+					   code.RTAS : Remove_Task,
+					   code.EUSE : Edit_Use,
 					   code.DROP : Drop,
 					   code.OUT : Out,
+					   code.DUSE : Delete_Use,
 					   code.CREATE: Create,
 					   code.USE : Use,
 					   code.SAVE : Save,
 					   code.LOAD : Load,
              		   code.DELETE: Delete,
+             		   code.ATAS : Add_Task,
              		   code.CUSE : Create_Use,
 					   code.EROOM : Edit_Room,
 					   code.EITEM : Edit_Item,
