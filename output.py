@@ -24,7 +24,7 @@ class Output:
 			def West():
 				print("West 1 Space")
 			def Look():
-				print("Player located at " + a.message)
+				print(a.message)
 				if len(a.args) > 0:
 					print("Items in room: ")
 					for b in a.args:
