@@ -58,7 +58,7 @@ class Input:
 						args.append(words[4])
 					elif len(words) == 4 and words[2].upper() == "DELETE":
 						mess.code = code.DUSE
-						args.append(words[3])			
+						args.append(words[3])
 					elif len(words) == 6 and words[2].upper() == "EDIT":
 						mess.code = code.EUSE
 						args.append(words[3])
@@ -100,7 +100,7 @@ class Input:
 				mess.message = words[words.index("LOOK") + 1]
 			else:
 				mess.code = code.LOOK
-			
+
 
 		elif "INVENTORY" in words:
 			mess.code = code.INVENTORY
@@ -145,6 +145,8 @@ class Input:
 			else:
 				mess.code = code.ERR
 				mess.message = "Incorrect Syntax"
+		elif "Exit" in words:
+			mess.code = code.Exit
 
 
 		# User command not understood

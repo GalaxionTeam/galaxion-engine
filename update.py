@@ -290,6 +290,9 @@ class Update:
 				else:
 					mess.code = code.ERR
 
+			def Exit():
+				exit()
+
 			options = {code.ERR : err,
 					   code.NORTH : North,
 					   code.SOUTH : South,
@@ -312,6 +315,7 @@ class Update:
 					   code.EITEM : Edit_Item,
 					   code.CUSE : Create_Use,
 					   code.LOOKITEM : Look_Item,
+					   code.EXIT : Exit
 					   }
 			options[a.code]()
 
