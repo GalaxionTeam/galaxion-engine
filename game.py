@@ -1,3 +1,4 @@
+import json
 from input import Input
 from update import Update
 from assets.player import Player
@@ -19,6 +20,15 @@ class Game:
 
 if __name__ == "__main__":
 	
+	with open('use.json', 'r') as read_file:
+		data = json.load(read_file)
+	for key, value in data.items():
+		data[key]["COMPLETE"] = False
+		for key1, value1 in data[key]["TASKS"].items():
+			data[key]["TASKS"][key1] = False
+	with open("use.json", 'w') as outfile:
+ 		json.dump(data,outfile)
+
 	game = Game()
 		
 	# Call update functions in a forever loop
