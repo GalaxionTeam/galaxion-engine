@@ -30,7 +30,7 @@ class Update:
 					mess.code = code.NORTH
 					pla.room = world.grid[pla.room.x][pla.room.y + 1]
 			def South():
-				if pla.room.y == code.SOUTH:
+				if pla.room.y == 0:
 					mess.code = code.OUT
 				else:
 					mess.code = code.SOUTH
@@ -144,7 +144,7 @@ class Update:
 						pla.items.append(Item(item_name[d],item_description[d]),item_loc_des[d])
 					else:
 						world.grid[item_x[d]][item_y[d]].items.append(Item(item_name[d],item_description[d],item_loc_des[d]))
-				#print(str(pla.room.items))
+						
 			def Delete():
 				mess.code = code.DELETE
 				mess.message = a.message
