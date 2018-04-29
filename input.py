@@ -45,8 +45,6 @@ class Input:
 					else:
 						mess.code = code.ERR
 						mess.message = "Incorrect Syntax"
-				else:
-					mess.message = "Unrecognized Command"
 				elif(words[1].upper() == "USE"):
 					if len(words) == 4 and words[2].upper() == "CREATE":
 						args.append(words[3])
