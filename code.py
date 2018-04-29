@@ -22,6 +22,4 @@ ATAS = 19
 RTAS = 20
 EUSE = 21
 DUSE = 22
-=======
->>>>>>> 66f0327f3a078a7fe749489635cfb5ff1dfff38c
 EXIT = 99
