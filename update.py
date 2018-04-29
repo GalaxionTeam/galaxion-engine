@@ -45,7 +45,7 @@ class Update:
 					pla.room = world.grid[pla.room.x - 1][pla.room.y]
 			def Look():
 				mess.code = code.LOOK
-				mess.message = pla.room.name
+				mess.message = pla.room.name + "/n" + pla.room.description
 				mess.args = pla.room.items
 				#print(str(pla.room.items))
 			def Inventory():
