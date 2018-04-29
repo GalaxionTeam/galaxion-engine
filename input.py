@@ -47,6 +47,31 @@ class Input:
 						mess.message = "Incorrect Syntax"
 				else:
 					mess.message = "Unrecognized Command"
+				elif(words[1].upper() == "USE"):
+					if len(words) == 4 and words[2].upper() == "CREATE":
+						args.append(words[3])
+						mess.code = code.CUSE
+					elif len(words) == 5 and words[2].upper() == "ADD":
+						mess.code = code.ATAS
+						args.append(words[3])
+						args.append(words[4])
+					elif len(words) == 5 and words[2].upper() == "REMOVE":
+						mess.code = code.RTAS
+						args.append(words[3])
+						args.append(words[4])
+					elif len(words) == 4 and words[2].upper() == "DELETE":
+						mess.code = code.DUSE
+						args.append(words[3])			
+					elif len(words) == 6 and words[2].upper() == "EDIT":
+						mess.code = code.EUSE
+						args.append(words[3])
+						args.append(words[4])
+						args.append(words[5])
+					else:
+						mess.code = code.ERR
+						mess.message = "Use command not recognized"
+				else:
+					print("Unrecognized Command!")
 					mess.code = code.ERR
 				mess.args = args
 				return mess
@@ -115,6 +140,23 @@ class Input:
 				mess.code = code.LOAD
 				mess.message = "data"
 				mess.message = "Item cannot be created"
+
+		elif "DELETE" in words:
+			if words.index("DELETE") != len(words) - 1:
+				mess.code = code.DELETE
+				mess.message = words[words.index("DELETE") + 1]
+			else:
+				mess.code = code.ERR
+				mess.message = "Item cannot be deleted"
+		elif "USE" in words:
+			if words.index("USE") != len(words) - 2:
+				mess.code = code.USE
+				mess.args.append(words[words.index("USE") + 1])
+				mess.args.append(words[words.index("USE") + 2])
+			else:
+				mess.code = code.ERR
+				mess.message = "Incorrect Syntax"
+
 
 		# User command not understood
 		else:
