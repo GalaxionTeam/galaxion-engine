@@ -41,7 +41,6 @@ class Input:
 					if len(words) == 3:
 						mess.code = code.DELETE
 						mess.message = words[2]
-						print(words[2])
 					else:
 						mess.code = code.ERR
 						mess.message = "Incorrect Syntax"
@@ -127,25 +126,17 @@ class Input:
 				mess.code = code.SAVE
 				mess.message = words[words.index("SAVE") + 1]
 			else:
-				mess.code = code.SAVE
-				mess.message = "data"
+				mess.code = code.ERR
+				mess.message = "File name error"
 
 		elif "LOAD" in words:
 			if words.index("LOAD") != len(words) - 1:
 				mess.code = code.LOAD
 				mess.message = words[words.index("LOAD") + 1]
 			else:
-				mess.code = code.LOAD
-				mess.message = "data"
-				mess.message = "Item cannot be created"
-
-		elif "DELETE" in words:
-			if words.index("DELETE") != len(words) - 1:
-				mess.code = code.DELETE
-				mess.message = words[words.index("DELETE") + 1]
-			else:
 				mess.code = code.ERR
-				mess.message = "Item cannot be deleted"
+				mess.message = "File name error"
+
 		elif "USE" in words:
 			if words.index("USE") != len(words) - 2:
 				mess.code = code.USE
