@@ -49,7 +49,7 @@ class Update:
 					pla.room = world.grid[pla.room.x - 1][pla.room.y]
 			def Look():
 				mess.code = code.LOOK
-				mess.message = pla.room.name
+				mess.message = pla.room.name + "\n" + pla.room.description
 				mess.args = pla.room.items
 			def Look_Item():
 				mess.code = code.ERR
@@ -144,7 +144,7 @@ class Update:
 						pla.items.append(Item(item_name[d],item_description[d]),item_loc_des[d])
 					else:
 						world.grid[item_x[d]][item_y[d]].items.append(Item(item_name[d],item_description[d],item_loc_des[d]))
-						
+
 			def Delete():
 				mess.code = code.DELETE
 				mess.message = a.message
@@ -169,7 +169,7 @@ class Update:
 				with open("use.json", 'w') as outfile:
  					json.dump(data,outfile)
 
-			
+
 			def Add_Task():
 				mess.code = code.ATAS
 				with open('use.json', 'r') as read_file:
@@ -233,7 +233,7 @@ class Update:
 						b_in_room = True
 				if a.args[1].upper() == pla.room.name.upper():
 					b_in_room = True
-				
+
 				if a_in_room:
 					with open('use.json', 'r') as read_file:
 						data = json.load(read_file)
