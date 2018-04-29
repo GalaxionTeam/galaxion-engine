@@ -149,6 +149,10 @@ class Input:
 			mess.code = code.Exit
 
 
+		elif "EXIT" in words:
+				mess.code = code.EXIT
+				mess.message = "See you later!"
+
 		# User command not understood
 		else:
 			mess.code = code.ERR

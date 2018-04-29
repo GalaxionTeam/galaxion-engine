@@ -15,13 +15,10 @@ DELETE = 11
 EROOM = 14
 EITEM = 15
 LOOKITEM = 16
-<<<<<<< HEAD
 CUSE = 17
 USE = 18
 ATAS = 19
 RTAS = 20
 EUSE = 21
 DUSE = 22
-=======
->>>>>>> 66f0327f3a078a7fe749489635cfb5ff1dfff38c
 EXIT = 99

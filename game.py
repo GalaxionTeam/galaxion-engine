@@ -5,13 +5,13 @@ from assets.player import Player
 from output import Output
 from assets.world import World
 import protologue
-	
+
 class Game:
 	def __init__(self):
 		print(protologue)
 		self.inp = Input()
 		self.upd = Update()
-		self.world = World(3,5)
+		self.world = World(3,4)
 		self.player1 = Player(self.world)
 		self.out = Output()
 
