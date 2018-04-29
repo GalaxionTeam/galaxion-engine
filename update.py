@@ -149,9 +149,8 @@ class Update:
 				mess.code = code.DELETE
 				mess.message = a.message
 				for b in pla.room.items:
-					if a.message == b.name.upper():
+					if a.message.upper() == b.name.upper():
 						pla.room.items.pop(pla.room.items.index(b))
-						#print(str(pla.room.items))
 
 			def Edit_Room():
 				mess.code = code.EROOM

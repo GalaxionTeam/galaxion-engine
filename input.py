@@ -20,6 +20,7 @@ class Input:
 						mess.code = code.EROOM
 					else:
 						mess.code = code.ERR
+						mess.message = "Incorrect Syntax"
 				elif(words[1].upper() == "ITEM"):
 					if len(words) == 5:
 						args.append(words[2])
@@ -28,6 +29,24 @@ class Input:
 						mess.code = code.EITEM
 					else:
 						mess.code = code.ERR
+						mess.message = "Incorrect Syntax"
+				elif(words[1].upper() == "CREATE"):
+					if len(words) == 3:
+						mess.code = code.CREATE
+						mess.message = words[2]
+					else:
+						mess.code = code.ERR
+						mess.message = "Incorrect Syntax"
+				elif(words[1].upper() == "DELETE"):
+					if len(words) == 3:
+						mess.code = code.DELETE
+						mess.message = words[2]
+						print(words[2])
+					else:
+						mess.code = code.ERR
+						mess.message = "Incorrect Syntax"
+				else:
+					mess.message = "Unrecognized Command"
 				elif(words[1].upper() == "USE"):
 					if len(words) == 4 and words[2].upper() == "CREATE":
 						args.append(words[3])
@@ -105,13 +124,6 @@ class Input:
 				mess.code = code.ERR
 				mess.message = "Item cannot be dropped"
 
-		elif "CREATE" in words:
-			if words.index("CREATE") != len(words) - 1:
-				mess.code = code.CREATE
-				mess.message = words[words.index("CREATE") + 1]
-			else:
-				mess.code = code.ERR
-
 		elif "SAVE" in words:
 			if words.index("SAVE") != len(words) - 1:
 				mess.code = code.SAVE
@@ -144,6 +156,7 @@ class Input:
 			else:
 				mess.code = code.ERR
 				mess.message = "Incorrect Syntax"
+
 
 		# User command not understood
 		else:
