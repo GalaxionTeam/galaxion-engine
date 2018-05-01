@@ -29,24 +29,29 @@ class Update:
 				else:
 					mess.code = code.NORTH
 					pla.room = world.grid[pla.room.x][pla.room.y + 1]
+					mess.message = pla.room.name + "\n" + pla.room.description
+
 			def South():
 				if pla.room.y == 0:
 					mess.code = code.OUT
 				else:
 					mess.code = code.SOUTH
 					pla.room = world.grid[pla.room.x][pla.room.y - 1]
+					mess.message = pla.room.name + "\n" + pla.room.description
 			def East():
 				if pla.room.x == len(world.grid) - 1:
 					mess.code = code.OUT
 				else:
 					mess.code = code.EAST
 					pla.room = world.grid[pla.room.x + 1][pla.room.y]
+					mess.message = pla.room.name + "\n" + pla.room.description
 			def West():
 				if pla.room.x == 0:
 					mess.code = code.OUT
 				else:
 					mess.code = code.WEST
 					pla.room = world.grid[pla.room.x - 1][pla.room.y]
+					mess.message = pla.room.name + "\n" + pla.room.description
 			def Look():
 				mess.code = code.LOOK
 				mess.message = pla.room.name + "\n" + pla.room.description

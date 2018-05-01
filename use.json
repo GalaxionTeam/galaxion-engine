@@ -1,1 +1,1 @@
-{"ROOM": {"COMPLETE": false, "MESSAGE": "YOU'VE FOUND ALL THE OBJECTS", "ANCHOR": "ROOM", "TASKS": {"BOOK": false, "TABLE": false, "PEN": false, "PENCIL": false}}, "WORLD": {"COMPLETE": false, "MESSAGE": "", "ANCHOR": "", "TASKS": {"ROOM": false}}}
+{"ROOM": {"ANCHOR": "ROOM", "TASKS": {"PENCIL": false, "TABLE": false, "BOOK": false, "PEN": false}, "MESSAGE": "YOU'VE FOUND ALL THE OBJECTS", "COMPLETE": false}, "WORLD": {"ANCHOR": "", "TASKS": {"ROOM": false}, "MESSAGE": "", "COMPLETE": false}}
