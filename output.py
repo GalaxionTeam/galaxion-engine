@@ -16,13 +16,13 @@ class Output:
 				print(a.message)
 				#I'm pretty sure we handle this case back in input
 			def North():
-				print("North 1 Space")
+				print(a.message)
 			def South():
-				print("South 1 Space")
+				print(a.message)
 			def East():
-				print("East 1 Space")
+				print(a.message)
 			def West():
-				print("West 1 Space")
+				print(a.message)
 			def Look():
 				print(a.message)
 				if len(a.args) > 0:
@@ -43,7 +43,7 @@ class Output:
 			def Drop():
 				print(a.message + " dropped")
 			def Out():
-				print("Out of Bounds")
+				print("The pieces of the ship you need to fix it aren't likely to have fallen this far away.")
 			def Create():
 				print(a.message + " created")
 			def Save():
