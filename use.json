@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"ROOM": {"ANCHOR": "ROOM", "TASKS": {"BOOK": false, "PENCIL": false, "PEN": false, "TABLE": false}, "MESSAGE": "YOU'VE FOUND ALL THE OBJECTS", "COMPLETE": false}, "WORLD": {"ANCHOR": "", "TASKS": {"ROOM": false}, "MESSAGE": "", "COMPLETE": false}}
+=======
+{"WORLD": {"ANCHOR": "", "TASKS": {"ROOM": true}, "MESSAGE": "", "CREATE": "table", "COMPLETE": true}}
+>>>>>>> bb8f6e3388761354d49617b1ffef31c3d7eb89f6

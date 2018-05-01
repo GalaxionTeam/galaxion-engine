@@ -4,12 +4,14 @@ from update import Update
 from assets.player import Player
 from output import Output
 from assets.world import World
-	
+import protologue
+
 class Game:
 	def __init__(self):
+		print(protologue)
 		self.inp = Input()
 		self.upd = Update()
-		self.world = World(3,5)
+		self.world = World(3,4)
 		self.player1 = Player(self.world)
 		self.out = Output()
 
@@ -19,7 +21,7 @@ class Game:
 		self.out.update()
 
 if __name__ == "__main__":
-	
+
 	with open('use.json', 'r') as read_file:
 		data = json.load(read_file)
 	for key, value in data.items():
@@ -30,7 +32,7 @@ if __name__ == "__main__":
  		json.dump(data,outfile)
 
 	game = Game()
-		
+
 	# Call update functions in a forever loop
 	try:
 		while True:
