@@ -320,11 +320,7 @@ class Update:
 					   code.EITEM : Edit_Item,
 					   code.CUSE : Create_Use,
 					   code.LOOKITEM : Look_Item,
-<<<<<<< HEAD
 					   code.EXIT : Exit
-=======
-					   code.EXIT : Exit,
->>>>>>> 66f0327f3a078a7fe749489635cfb5ff1dfff38c
 					   }
 			options[a.code]()
 
