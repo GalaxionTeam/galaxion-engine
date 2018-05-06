@@ -170,7 +170,7 @@ class Update:
 				mess.code = code.CUSE
 				with open('use.json', 'r') as read_file:
 					data = json.load(read_file)
-				data.update({a.args[0].upper() : {"COMPLETE" : False, "MESSAGE" : "", "ANCHOR" : "", "TASKS" : {}}})
+				data.update({a.args[0].upper() : {"COMPLETE" : False, "MESSAGE" : "", "ANCHOR" : "", "CREATE": "", "TASKS" : {}}})
 				with open("use.json", 'w') as outfile:
  					json.dump(data,outfile)
 
@@ -260,6 +260,12 @@ class Update:
 							data[a.args[1].upper()]["COMPLETE"] = complete
 							if complete:
 								mess.message += "\n" + data[a.args[1].upper()]["MESSAGE"]
+								if data[a.args[1].upper()]["CREATE"] != "":
+									mess2 = Message()
+									mess2.code = code.CREATE
+									mess2.message = data[a.args[1].upper()]["CREATE"]
+									self.messages.append(mess2)
+
 							#	for key1 in data:
 							#		for key,val in data[key1]["TASKS"]:
 							#			if key == a.args[1].upper():
@@ -320,7 +326,7 @@ class Update:
 					   code.EITEM : Edit_Item,
 					   code.CUSE : Create_Use,
 					   code.LOOKITEM : Look_Item,
-					   code.EXIT : Exit
+					   code.EXIT : Exit,
 					   }
 			options[a.code]()
 
